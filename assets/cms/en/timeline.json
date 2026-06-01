@@ -1,0 +1,179 @@
+[
+  {
+    "id": "adesso",
+    "period": "2022 – Present",
+    "organisation": "adesso SE",
+    "role": "Senior Software Engineer & AI Expert",
+    "title": "Engineering across energy, catering & generative AI",
+    "summary": "At adesso SE I've grown into a Senior Software Engineer and AI Expert, leading UI architecture and bridging design and development across very different domains — from enterprise energy dispatch to catering platforms — while driving the adoption of generative AI throughout the company.",
+    "responsibilities": [
+      "I lead UI architecture and design-system work with Angular, PrimeNG, Tailwind CSS and Telerik/Kendo",
+      "I bridge the gap between design and engineering teams as the go-to person for UI/UX",
+      "I drive generative-AI enablement and modern DevOps practices",
+      "I coach engineers on UI/UX excellence and support technical hiring"
+    ],
+    "techStack": ["Angular", "PrimeNG", "Tailwind CSS", "C#", ".NET", "Blazor", "Flutter", "AWS"],
+    "current": true,
+    "children": [
+      {
+        "id": "adessogpt",
+        "period": "2025 – Present",
+        "organisation": "adessoGPT · adesso SE",
+        "role": "AI Expert & DevOps",
+        "title": "Generative-AI enablement at scale",
+        "summary": "I direct generative-AI enablement on the adessoGPT initiative, helping teams across the company adopt AI productively while keeping DevOps and delivery practices solid.",
+        "responsibilities": [
+          "I enable generative-AI adoption across teams and use cases",
+          "I shape DevOps and delivery practices for the platform",
+          "I prototype and evaluate AI-assisted engineering workflows"
+        ],
+        "techStack": ["Generative AI", "Conversational AI", "DevOps", "Azure", "C#"],
+        "current": true
+      },
+      {
+        "id": "gantner",
+        "period": "2025 – Present",
+        "organisation": "Gantner DigiRest GmbH",
+        "role": "Software Engineer & UX Developer",
+        "title": "Modernising the catering suite (MaxxLive · MaxxConference · MaxxApp)",
+        "summary": "I work on Gantner DigiRest's catering suite — Angular web apps (MaxxLive, MaxxConference) and a Flutter mobile app (MaxxApp) for canteen ordering and balance management — modernising the tech stack and the experience.",
+        "responsibilities": [
+          "I implement customer requirements and improve the tech stack",
+          "I integrate and rework payment providers (e.g. Adyen)",
+          "I drive design updates and the rebrand from contidata to Gantner",
+          "I maintain the cross-platform MaxxApp"
+        ],
+        "techStack": ["Angular", "Telerik / Kendo", "PrimeNG", "Tailwind CSS", "C#", "Flutter", "Keycloak"]
+      },
+      {
+        "id": "beyonnex",
+        "period": "2022 – 2025",
+        "organisation": "beyonnex.io GmbH",
+        "role": "Fullstack Engineer & UI Lead",
+        "title": "Re-architecting enterprise energy dispatch (BxTrack)",
+        "summary": "On BxTrack — the central dispatch hub for field operations in the energy sector — I took on the UI Lead role and steered the migration of a legacy ASP.NET MVC portal to a modern Blazor Server architecture, designing the multi-tenancy concept along the way.",
+        "responsibilities": [
+          "I led the UI migration from ASP.NET MVC to Blazor Server with Telerik & MudBlazor",
+          "I designed the multi-tenancy capability across master-data and order management",
+          "I operated AWS infrastructure (RDS, EKS, ECR) provisioned entirely as Terraform IaC",
+          "I established UI quality gates and supported hiring through interviews"
+        ],
+        "techStack": ["Blazor", "MudBlazor", "C#", ".NET Core", "ASP.NET MVC", "AWS", "Terraform", "Apache Kafka", "GitLab CI/CD"]
+      }
+    ]
+  },
+  {
+    "id": "eckd",
+    "period": "2018 – 2022",
+    "organisation": "ECKD Service GmbH",
+    "role": "Software Engineer",
+    "title": "Building the ITM suite for the church market",
+    "summary": "I started my career at ECKD building production software for the church/municipal registry market — owning both front- and backend across the ITM product suite, with the standardised XMeld registry data exchange at its core.",
+    "responsibilities": [
+      "I developed front- and backend features across the ITM suite",
+      "I built and maintained CI/CD pipelines on Kubernetes with Helm",
+      "I supported requirements engineering and UI/UX design",
+      "I worked agile (Scrum/Kanban) with Git and GitFlow"
+    ],
+    "techStack": ["C#", ".NET", "Angular", "NServiceBus", "MSMQ", "RavenDB", "Kubernetes", "Helm", "Azure DevOps"],
+    "children": [
+      {
+        "id": "kira-xmeld",
+        "period": "2021 – 2022",
+        "organisation": "ITM.KirA · XMeld",
+        "role": "Software Engineer",
+        "title": "Mastering the XMeld registry standard",
+        "summary": "I engineered the XMeld processing module at the heart of ITM.KirA — turning high-volume XML registry feeds into a reliable single source of truth and aggregating fragmented person records into the highest-possible data correctness.",
+        "responsibilities": [
+          "I upgraded the XMeld processing to XMeld 3.0 with gross-message (Bruttonachrichten) handling",
+          "I aggregated competing person-data sources into authoritative records",
+          "I resolved complex individual registry cases in support consultations",
+          "I analysed Big Data & AI opportunities in the ecclesiastical domain"
+        ],
+        "techStack": ["C#", ".NET", "XMeld", "NServiceBus", "MSMQ", "Azure DevOps", "DDD"]
+      },
+      {
+        "id": "landingpages",
+        "period": "2020 – 2022",
+        "organisation": "ITM.Landingpages",
+        "role": "Software Engineer & UX Designer",
+        "title": "Campaign landing pages & e-marketing",
+        "summary": "I built a collection of landing pages for product launches, digitalisation campaigns and event venues, wiring them up to e-marketing tooling and the deployment pipeline.",
+        "responsibilities": [
+          "I developed landing pages and connected them to e-marketing tools",
+          "I built CI/CD pipelines and supported deployment"
+        ],
+        "techStack": ["Angular", "TypeScript", "SCSS", "RxJS", "Docker", "Azure DevOps"]
+      },
+      {
+        "id": "gemeindeplaner",
+        "period": "2019 – 2021",
+        "organisation": "ITM.Gemeindeplaner",
+        "role": "Software Engineer & Requirements Engineer",
+        "title": "Planning tool for parish work",
+        "summary": "I developed the ITM.Gemeindeplaner end-to-end — a tool to help parishes plan and manage services, agendas and resources — owning the UI and supporting requirements management.",
+        "responsibilities": [
+          "I developed the software front- and backend",
+          "I designed and implemented the UI",
+          "I supported requirements management and maintained the CI/CD pipelines"
+        ],
+        "techStack": ["Angular 10", "C#", ".NET", "NServiceBus", "MSMQ", "Kubernetes", "Helm", "Docker"]
+      },
+      {
+        "id": "kira",
+        "period": "2018 – 2019",
+        "organisation": "ITM.KirA",
+        "role": "Software Engineer",
+        "title": "First steps: the church workplace platform",
+        "summary": "I joined the ITM.KirA platform — the all-in-one tool for parishes to manage members, ceremonies, donations and elections — developing both front- and backend from day one.",
+        "responsibilities": [
+          "I developed the software front- and backend",
+          "I supported requirements management"
+        ],
+        "techStack": ["Angular", "C#", ".NET", "NServiceBus", "RavenDB", "Azure DevOps"]
+      }
+    ]
+  },
+  {
+    "id": "studies",
+    "period": "2018 – 2022",
+    "organisation": "FOM Kassel",
+    "role": "Dual Studies & Apprenticeship",
+    "title": "Business Informatics meets production code",
+    "summary": "I combined academic rigour with hands-on delivery — a vocational apprenticeship in application development running in parallel with a Bachelor of Science in Business Informatics, so I could get the best out of both worlds.",
+    "responsibilities": [
+      "I earned a B.Sc. in Business Informatics (specialisation: E-Business Management)",
+      "I completed an apprenticeship as an IT specialist for application development",
+      "I wrote my thesis on Big Data in the church registry domain (grade 1.3)"
+    ],
+    "techStack": ["C#", ".NET", "Angular", "TypeScript", "SQL", "UML"],
+    "children": [
+      {
+        "id": "bsc",
+        "period": "2018 – 2022",
+        "organisation": "FOM Hochschule für Oekonomie & Management",
+        "role": "B.Sc. Business Informatics",
+        "title": "Bachelor of Science, Business Informatics",
+        "summary": "I studied Business Informatics with a specialisation in E-Business Management and wrote my thesis on the potential of Big Data within the church registry domain (grade 1.3, colloquium 1.0).",
+        "responsibilities": [
+          "Specialisation: E-Business Management",
+          "Thesis: Big Data in the church registry domain (grade 1.3)"
+        ],
+        "techStack": ["Business Informatics", "Big Data", "Requirements Engineering"]
+      },
+      {
+        "id": "apprenticeship",
+        "period": "2018 – 2021",
+        "organisation": "Fachinformatiker (AE)",
+        "role": "Apprenticeship",
+        "title": "IT Specialist for Application Development",
+        "summary": "In parallel with my studies I completed a vocational apprenticeship as an IT specialist for application development, shipping real features from the very beginning.",
+        "responsibilities": [
+          "I learned application development hands-on while delivering production work",
+          "I built a broad foundation across C#/.NET and web technologies"
+        ],
+        "techStack": ["C#", ".NET", "JavaScript", "SQL", "HTML", "CSS"]
+      }
+    ]
+  }
+]
