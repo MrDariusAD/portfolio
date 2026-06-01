@@ -119,13 +119,38 @@ request fails, so the UI always renders.
 5. Publishes `dist/portfolio/browser` to the **`gh-pages`** branch via the built-in
    `GITHUB_TOKEN`.
 
-### Enabling a custom apex domain
+### Quickstart: deploy to `oezdemirs.de`
 
-1. In your repo: **Settings → Secrets and variables → Actions → Variables** → add
-   `CUSTOM_DOMAIN` (e.g. `salih-can-oezdemir.de`).
-2. Point your DNS apex `A`/`ALIAS` records at GitHub Pages.
-3. **Settings → Pages** → set the source to the `gh-pages` branch. The pipeline keeps
-   the `CNAME` in sync on every deploy.
+```bash
+# 1. Push the repo (one-time)
+git remote add origin https://github.com/MrDariusAD/portfolio.git
+git push -u origin main
+```
+
+2. **Settings → Secrets and variables → Actions → Variables** → add
+   `CUSTOM_DOMAIN` = `oezdemirs.de`. _(Optional — the repo also ships a committed
+   `public/CNAME` fallback with the same value, so the domain is applied even
+   without the variable.)_
+3. The push runs the workflow and creates the **`gh-pages`** branch. Then
+   **Settings → Pages → Source: Deploy from a branch → `gh-pages` / `(root)`**.
+4. DNS at your registrar (apex `oezdemirs.de`):
+
+   | Type | Name | Value |
+   | ---- | ---- | ----- |
+   | A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+   | AAAA | `@` | `2606:50c0:8000::153`, `…8001::153`, `…8002::153`, `…8003::153` |
+   | CNAME | `www` | `MrDariusAD.github.io.` |
+
+5. Once DNS resolves, tick **Enforce HTTPS** in Settings → Pages.
+
+> The production build uses `baseHref: "/"`, correct for the apex domain. The raw
+> `MrDariusAD.github.io/portfolio` project URL will look broken (assets 404 under the
+> root base href) — `https://oezdemirs.de` is the real target.
+
+### Using a different domain
+
+Change the `CUSTOM_DOMAIN` Actions variable (it takes precedence) or edit
+`public/CNAME`, then repeat the DNS step for your domain.
 
 ## 📄 License
 

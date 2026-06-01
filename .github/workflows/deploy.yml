@@ -49,6 +49,9 @@ jobs:
         run: cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
 
       - name: 🏷️ Inject custom apex-domain CNAME
+        # The repo ships a committed fallback at `public/CNAME` (oezdemirs.de),
+        # which the build already copies into the output. If the CUSTOM_DOMAIN
+        # Actions variable is set, it takes precedence and overwrites it here.
         if: ${{ env.CUSTOM_DOMAIN != '' }}
         run: |
           echo "${CUSTOM_DOMAIN}" > dist/portfolio/browser/CNAME
