@@ -1,0 +1,32 @@
+# Dependencies
+/node_modules
+/cms/node_modules
+
+# Build output
+/dist
+/tmp
+/out-tsc
+/.angular/cache
+
+# Environment / secrets
+.env
+.env.*
+
+# Payload generated types
+/cms/payload-types.ts
+
+# Editor / OS
+.idea
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# Testing
+/coverage
+
+# Source CV documents — contain personal data (phone, address); keep out of the repo
+/Lebenslauf_DE.pdf
+/*.docx

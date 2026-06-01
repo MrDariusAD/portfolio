@@ -1,0 +1,179 @@
+[
+  {
+    "id": "adesso",
+    "period": "2022 – heute",
+    "organisation": "adesso SE",
+    "role": "Senior Software Engineer & KI-Experte",
+    "title": "Engineering über Energie, Catering & generative KI hinweg",
+    "summary": "Bei der adesso SE bin ich zum Senior Software Engineer und KI-Experten herangewachsen. Ich verantworte UI-Architektur und bilde die Brücke zwischen Design und Entwicklung über sehr unterschiedliche Domänen hinweg — von der Disposition in der Energiewirtschaft bis zu Catering-Plattformen — und treibe zugleich die Einführung generativer KI im Unternehmen voran.",
+    "responsibilities": [
+      "Ich leite die UI-Architektur und Designsystem-Arbeit mit Angular, PrimeNG, Tailwind CSS und Telerik/Kendo",
+      "Ich bilde als Ansprechpartner für UI/UX die Brücke zwischen Design- und Entwicklungsteams",
+      "Ich treibe generatives KI-Enablement und moderne DevOps-Praktiken voran",
+      "Ich coache Entwickler zu UI/UX-Exzellenz und unterstütze bei der Einstellung"
+    ],
+    "techStack": ["Angular", "PrimeNG", "Tailwind CSS", "C#", ".NET", "Blazor", "Flutter", "AWS"],
+    "current": true,
+    "children": [
+      {
+        "id": "adessogpt",
+        "period": "2025 – heute",
+        "organisation": "adessoGPT · adesso SE",
+        "role": "KI-Experte & DevOps",
+        "title": "Generatives KI-Enablement im großen Maßstab",
+        "summary": "Ich leite das generative KI-Enablement in der Initiative adessoGPT und helfe Teams im gesamten Unternehmen, KI produktiv einzusetzen — bei gleichzeitig soliden DevOps- und Delivery-Praktiken.",
+        "responsibilities": [
+          "Ich ermögliche die Einführung generativer KI über Teams und Use Cases hinweg",
+          "Ich gestalte die DevOps- und Delivery-Praktiken der Plattform",
+          "Ich prototype und bewerte KI-gestützte Engineering-Workflows"
+        ],
+        "techStack": ["Generative KI", "Conversational AI", "DevOps", "Azure", "C#"],
+        "current": true
+      },
+      {
+        "id": "gantner",
+        "period": "2025 – heute",
+        "organisation": "Gantner DigiRest GmbH",
+        "role": "Software Engineer & UX Developer",
+        "title": "Modernisierung der Catering-Suite (MaxxLive · MaxxConference · MaxxApp)",
+        "summary": "Ich arbeite an der Catering-Suite von Gantner DigiRest — Angular-Webanwendungen (MaxxLive, MaxxConference) und eine Flutter-App (MaxxApp) für Kantinenbestellung und Guthabenverwaltung — und modernisiere Tech-Stack und Erlebnis.",
+        "responsibilities": [
+          "Ich setze Kundenanforderungen um und verbessere den Tech-Stack",
+          "Ich binde Zahlungsanbieter an und überarbeite sie (z. B. Adyen)",
+          "Ich treibe Designupdates und den Rebrand von contidata zu Gantner voran",
+          "Ich pflege die plattformübergreifende MaxxApp"
+        ],
+        "techStack": ["Angular", "Telerik / Kendo", "PrimeNG", "Tailwind CSS", "C#", "Flutter", "Keycloak"]
+      },
+      {
+        "id": "beyonnex",
+        "period": "2022 – 2025",
+        "organisation": "beyonnex.io GmbH",
+        "role": "Fullstack Engineer & UI-Lead",
+        "title": "Neuarchitektur der Enterprise-Disposition (BxTrack)",
+        "summary": "Bei BxTrack — der zentralen Dispositionsdrehscheibe für den Außendienst in der Energiewirtschaft — übernahm ich die Rolle des UI-Leads und steuerte die Migration eines Legacy-Portals von ASP.NET MVC zu einer modernen Blazor-Server-Architektur, inklusive der Konzeption der Mandantenfähigkeit.",
+        "responsibilities": [
+          "Ich leitete die UI-Migration von ASP.NET MVC zu Blazor Server mit Telerik & MudBlazor",
+          "Ich konzipierte die Mandantenfähigkeit über Stammdaten- und Auftragsverwaltung hinweg",
+          "Ich betrieb die AWS-Infrastruktur (RDS, EKS, ECR), vollständig als Terraform-IaC",
+          "Ich etablierte UI-Quality-Gates und unterstützte bei Bewerbungsgesprächen"
+        ],
+        "techStack": ["Blazor", "MudBlazor", "C#", ".NET Core", "ASP.NET MVC", "AWS", "Terraform", "Apache Kafka", "GitLab CI/CD"]
+      }
+    ]
+  },
+  {
+    "id": "eckd",
+    "period": "2018 – 2022",
+    "organisation": "ECKD Service GmbH",
+    "role": "Software Engineer",
+    "title": "Aufbau der ITM-Suite für den kirchlichen Markt",
+    "summary": "Meine Laufbahn begann bei ECKD mit produktiver Software für den kirchlichen/kommunalen Meldewesen-Markt — ich verantwortete Front- und Backend in der ITM-Produktsuite, mit dem standardisierten XMeld-Datenaustausch im Kern.",
+    "responsibilities": [
+      "Ich entwickelte Front- und Backend-Features in der ITM-Suite",
+      "Ich baute und pflegte CI/CD-Pipelines auf Kubernetes mit Helm",
+      "Ich unterstützte Requirements Engineering und UI/UX-Design",
+      "Ich arbeitete agil (Scrum/Kanban) mit Git und GitFlow"
+    ],
+    "techStack": ["C#", ".NET", "Angular", "NServiceBus", "MSMQ", "RavenDB", "Kubernetes", "Helm", "Azure DevOps"],
+    "children": [
+      {
+        "id": "kira-xmeld",
+        "period": "2021 – 2022",
+        "organisation": "ITM.KirA · XMeld",
+        "role": "Software Engineer",
+        "title": "Meisterung des XMeld-Standards",
+        "summary": "Ich entwickelte das XMeld-Verarbeitungsmodul im Herzen von ITM.KirA — ich verwandelte umfangreiche XML-Meldedatenströme in eine verlässliche Single Source of Truth und aggregierte fragmentierte Personendaten zu höchstmöglicher Datenkorrektheit.",
+        "responsibilities": [
+          "Ich aktualisierte die XMeld-Verarbeitung auf XMeld 3.0 mit Bruttonachrichten",
+          "Ich aggregierte konkurrierende Personendatenquellen zu maßgeblichen Datensätzen",
+          "Ich löste komplexe Einzelfälle im Meldewesen in Sprechstunden",
+          "Ich analysierte Big-Data- und KI-Einsatzmöglichkeiten im kirchlichen Umfeld"
+        ],
+        "techStack": ["C#", ".NET", "XMeld", "NServiceBus", "MSMQ", "Azure DevOps", "DDD"]
+      },
+      {
+        "id": "landingpages",
+        "period": "2020 – 2022",
+        "organisation": "ITM.Landingpages",
+        "role": "Software Engineer & UX Designer",
+        "title": "Kampagnen-Landingpages & E-Marketing",
+        "summary": "Ich baute eine Sammlung von Landingpages für Produkteinführungen, Digitalisierungskampagnen und Veranstaltungsräume und verband sie mit E-Marketing-Tools und der Deployment-Pipeline.",
+        "responsibilities": [
+          "Ich entwickelte Landingpages und band sie an E-Marketing-Tools an",
+          "Ich baute CI/CD-Pipelines und unterstützte beim Deployment"
+        ],
+        "techStack": ["Angular", "TypeScript", "SCSS", "RxJS", "Docker", "Azure DevOps"]
+      },
+      {
+        "id": "gemeindeplaner",
+        "period": "2019 – 2021",
+        "organisation": "ITM.Gemeindeplaner",
+        "role": "Software Engineer & Requirements Engineer",
+        "title": "Planungstool für die Gemeindearbeit",
+        "summary": "Ich entwickelte den ITM.Gemeindeplaner durchgängig — ein Werkzeug, das Gemeinden bei der Planung und Verwaltung von Gottesdiensten, Agenden und Ressourcen unterstützt — verantwortete die UI und unterstützte das Anforderungsmanagement.",
+        "responsibilities": [
+          "Ich entwickelte die Software in Front- und Backend",
+          "Ich entwarf und implementierte die UI",
+          "Ich unterstützte das Anforderungsmanagement und pflegte die CI/CD-Pipelines"
+        ],
+        "techStack": ["Angular 10", "C#", ".NET", "NServiceBus", "MSMQ", "Kubernetes", "Helm", "Docker"]
+      },
+      {
+        "id": "kira",
+        "period": "2018 – 2019",
+        "organisation": "ITM.KirA",
+        "role": "Software Engineer",
+        "title": "Erste Schritte: der kirchliche Arbeitsplatz",
+        "summary": "Ich stieg in die Plattform ITM.KirA ein — das All-in-one-Tool, mit dem Gemeinden Mitglieder, Amtshandlungen, Spenden und Wahlen verwalten — und entwickelte von Anfang an Front- und Backend.",
+        "responsibilities": [
+          "Ich entwickelte die Software in Front- und Backend",
+          "Ich unterstützte das Anforderungsmanagement"
+        ],
+        "techStack": ["Angular", "C#", ".NET", "NServiceBus", "RavenDB", "Azure DevOps"]
+      }
+    ]
+  },
+  {
+    "id": "studies",
+    "period": "2018 – 2022",
+    "organisation": "FOM Kassel",
+    "role": "Duales Studium & Ausbildung",
+    "title": "Wirtschaftsinformatik trifft Produktionscode",
+    "summary": "Ich verband akademischen Anspruch mit praktischer Umsetzung — eine Ausbildung in der Anwendungsentwicklung parallel zum Bachelor of Science in Wirtschaftsinformatik, um das Beste aus beiden Welten herauszuholen.",
+    "responsibilities": [
+      "Ich erwarb einen B.Sc. in Wirtschaftsinformatik (Vertiefung: E-Business Management)",
+      "Ich absolvierte eine Ausbildung zum Fachinformatiker für Anwendungsentwicklung",
+      "Ich schrieb meine Abschlussarbeit über Big Data im kirchlichen Meldewesen (Note 1,3)"
+    ],
+    "techStack": ["C#", ".NET", "Angular", "TypeScript", "SQL", "UML"],
+    "children": [
+      {
+        "id": "bsc",
+        "period": "2018 – 2022",
+        "organisation": "FOM Hochschule für Oekonomie & Management",
+        "role": "B.Sc. Wirtschaftsinformatik",
+        "title": "Bachelor of Science, Wirtschaftsinformatik",
+        "summary": "Ich studierte Wirtschaftsinformatik mit der Vertiefung E-Business Management und schrieb meine Abschlussarbeit über das Potenzial von Big Data im kirchlichen Meldewesen (Note 1,3, Kolloquium 1,0).",
+        "responsibilities": [
+          "Vertiefung: E-Business Management",
+          "Abschlussarbeit: Big Data im kirchlichen Meldewesen (Note 1,3)"
+        ],
+        "techStack": ["Wirtschaftsinformatik", "Big Data", "Requirements Engineering"]
+      },
+      {
+        "id": "apprenticeship",
+        "period": "2018 – 2021",
+        "organisation": "Fachinformatiker (AE)",
+        "role": "Ausbildung",
+        "title": "Fachinformatiker für Anwendungsentwicklung",
+        "summary": "Parallel zum Studium absolvierte ich eine Ausbildung zum Fachinformatiker für Anwendungsentwicklung und lieferte von Beginn an echte Features.",
+        "responsibilities": [
+          "Ich lernte Anwendungsentwicklung praxisnah und lieferte produktive Arbeit",
+          "Ich baute ein breites Fundament über C#/.NET und Web-Technologien auf"
+        ],
+        "techStack": ["C#", ".NET", "JavaScript", "SQL", "HTML", "CSS"]
+      }
+    ]
+  }
+]

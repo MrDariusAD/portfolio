@@ -1,0 +1,71 @@
+name: Build & Deploy to GitHub Pages
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Triggers: every push to the default branch (main or master) + manual dispatch.
+# ─────────────────────────────────────────────────────────────────────────────
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+# Allow the workflow to push the built bundle to the gh-pages branch.
+permissions:
+  contents: write
+
+# Cancel superseded runs on the same ref to save CI minutes.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Apex / custom domain written into the CNAME file. Override via a repo
+  # Actions *variable* named CUSTOM_DOMAIN (Settings → Secrets and variables →
+  # Actions → Variables). Leave empty to skip CNAME generation.
+  CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js (LTS) with npm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📦 Install dependencies (clean, reproducible)
+        run: npm ci
+
+      - name: 🏗️ Build production bundle
+        run: npm run build:prod
+
+      - name: 🌐 Configure SPA fallback (deep-link safe on a static host)
+        # Copying index.html → 404.html lets GitHub Pages serve the Angular app
+        # for any unknown path (e.g. /projects/int-kmp/privacy) so the client
+        # router can take over — no server-side rewrite engine required.
+        run: cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
+
+      - name: 🏷️ Inject custom apex-domain CNAME
+        if: ${{ env.CUSTOM_DOMAIN != '' }}
+        run: |
+          echo "${CUSTOM_DOMAIN}" > dist/portfolio/browser/CNAME
+          echo "Wrote CNAME → ${CUSTOM_DOMAIN}"
+
+      - name: 🚫 Disable Jekyll processing
+        # Ensures GitHub Pages serves Angular's _-prefixed files untouched.
+        run: touch dist/portfolio/browser/.nojekyll
+
+      - name: 🚀 Publish to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/portfolio/browser
+          publish_branch: gh-pages
+          # Keep the CNAME stable across deploys (also written above).
+          cname: ${{ env.CUSTOM_DOMAIN }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'deploy: ${{ github.sha }}'
