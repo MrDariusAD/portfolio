@@ -39,7 +39,7 @@ interface NavItem {
             >SÖ</span
           >
           <span class="hidden text-sm font-bold tracking-tight sm:block">
-            Salih-Can <span class="text-gs-crimson-600 dark:text-gs-gold-400">Özdemir</span>
+            Salih <span class="text-gs-crimson-600 dark:text-gs-gold-400">Özdemir</span>
           </span>
         </a>
 

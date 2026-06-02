@@ -15,7 +15,7 @@ import { TranslationService } from '../../core/translation.service';
       >
         <div class="text-center sm:text-left">
           <p class="font-bold">
-            Salih-Can <span class="text-gs-crimson-600 dark:text-gs-gold-400">Özdemir</span>
+            Salih <span class="text-gs-crimson-600 dark:text-gs-gold-400">Özdemir</span>
           </p>
           <p class="mt-1 text-sm text-content-muted">{{ i18n.t('footer.role') }}</p>
         </div>

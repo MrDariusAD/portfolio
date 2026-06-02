@@ -28,12 +28,14 @@
   }
 
   html.dark {
-    --canvas: 15 23 42; /* #0f172a — Slate 900  */
-    --surface: 30 41 59; /* #1e293b — Slate 800 */
-    --surface-muted: 51 65 85; /* #334155      */
-    --content: 248 250 252; /* #f8fafc          */
-    --content-muted: 148 163 184; /* #94a3b8    */
-    --hairline: 51 65 85; /* #334155            */
+    /* Dark theme is a warm charcoal with a subtle crimson hint — leans toward
+       the Galatasaray brand without the heavy maroon; crimson/gold stay as accents. */
+    --canvas: 24 19 23; /* #181317 — near-black, faint warm  */
+    --surface: 37 29 34; /* #251d22 — warm charcoal panel    */
+    --surface-muted: 51 40 49; /* #332831 — raised surface    */
+    --content: 246 241 243; /* #f6f1f3 — warm near-white      */
+    --content-muted: 179 166 172; /* #b3a6ac — warm muted     */
+    --hairline: 63 47 57; /* #3f2f39 — subtle warm border     */
 
     color-scheme: dark;
   }

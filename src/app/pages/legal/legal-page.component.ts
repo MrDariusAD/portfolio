@@ -38,7 +38,7 @@ type LegalKind = 'privacy' | 'gdpr';
               class="grid h-9 w-9 place-items-center rounded-xl bg-gs-crimson-700 font-extrabold text-white"
               >SÖ</span
             >
-            <span class="text-sm font-bold">Salih-Can Özdemir</span>
+            <span class="text-sm font-bold">Salih Özdemir</span>
           </a>
           <a
             routerLink="/"

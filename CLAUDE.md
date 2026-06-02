@@ -15,6 +15,10 @@ gallery with detail dialogs, and hidden per-project legal pages (privacy / GDPR)
 
 - **Owner / voice:** Salih-Can Özdemir. Surname is **Özdemir** (an older CV PDF said
   "Selvi" — that is outdated; always use **Özdemir**).
+- **Name usage:** he goes by **Salih**. Use "Salih" / "Salih Özdemir" everywhere in the
+  UI and narrative (header/footer brand, profile name, intro, page title/OG). Use the full
+  **"Salih-Can Özdemir"** only in *official* spots: the legal data-controller line in
+  privacy/GDPR markdown, the footer **© copyright** notice, and the SEO `<meta name="author">`.
 - **GitHub handle:** `MrDariusAD`
 - **Production domain:** `https://oezdemirs.de` (GitHub Pages, apex domain).
 - **Primary contact / socials** live in `src/assets/cms/<lang>/profile.json` (GitHub,
@@ -102,7 +106,11 @@ The brand is the colours of **Galatasaray**:
 - **Primary / crimson:** `#a80633` — branding, primary buttons, active states, timeline nodes.
 - **Secondary / gold:** `#fbbb20` — borders, tags, hover, subheadings, accents.
 - **Light:** canvas `#f8fafc`, surface `#ffffff`, text `#0f172a`.
-- **Dark:** canvas `#0f172a`, surface `#1e293b`, text `#f8fafc`.
+- **Dark:** **warm charcoal with a subtle crimson hint, not slate-blue** (deliberately
+  restrained — not heavy maroon) — canvas `#181317`, surface `#251d22`, surface-muted
+  `#332831`, text `#f6f1f3`, muted `#b3a6ac`, hairline `#3f2f39`. The PrimeNG preset's dark
+  `surface` ramp is a matching warm-charcoal scale so dialogs/inputs/etc. follow suit.
+  Crimson/gold remain accents on top.
 
 How it's wired:
 - `tailwind.config.js` exposes `gs.crimson.*` / `gs.gold.*` ramps and semantic tokens
@@ -144,6 +152,13 @@ schemas (`cms/`) mirror them 1:1.
 
 To **edit content**: change the JSON files and redeploy (a push rebuilds the site). For DE,
 edit the `de/` copies too.
+
+To **add a project**: there's a user-level Claude Code skill **`portfolio-entry`** (at
+`~/.claude/skills/portfolio-entry/`). Run it *inside the app's own repo* — it analyses that
+repo and emits ready-to-paste EN + DE `Project` JSON (summary, first-person description,
+techStack, optional lifecycle, and privacy/GDPR markdown when personal data is processed),
+matching this portfolio's schema and voice. Append the `en`/`de` objects to the respective
+`projects.json` arrays.
 
 ---
 

@@ -70,19 +70,22 @@ export const GalatasarayPreset = definePreset(Aura, {
           color: '#fcca4d',
           focusColor: '#fde08a'
         },
+        // Warm-charcoal surface ramp (subtle crimson hint, not full maroon) so
+        // PrimeNG dark-mode components — dialogs, inputs, select buttons,
+        // tooltips — match the dark canvas instead of cool slate-blue.
         surface: {
           0: '#ffffff',
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617'
+          50: '#f9f4f6',
+          100: '#efe6ea',
+          200: '#ddccd2',
+          300: '#c0a8b1',
+          400: '#9c7e8a',
+          500: '#7a5e6b',
+          600: '#5e4854',
+          700: '#483641',
+          800: '#322630',
+          900: '#221a20',
+          950: '#181317'
         }
       }
     }

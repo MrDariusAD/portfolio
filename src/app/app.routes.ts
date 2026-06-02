@@ -16,7 +16,7 @@ export const routes: Routes = [
     pathMatch: 'full',
     loadComponent: () =>
       import('./pages/home/home.component').then((m) => m.HomeComponent),
-    title: 'Salih-Can Özdemir — Senior Software Engineer'
+    title: 'Salih Özdemir — Senior Software Engineer'
   },
   {
     // Hidden legal sub-pages — deep-linked only from project cards / dialogs.
