@@ -56,11 +56,13 @@
   { "id": "sk-aws-rds", "name": "AWS RDS", "category": "Data", "proficiency": 85, "tags": ["Production", "Managed SQL"] },
   { "id": "sk-appwrite", "name": "Appwrite", "category": "Data", "proficiency": 70, "tags": ["Side projects", "BaaS"] },
 
+  { "id": "sk-visualstudio", "name": "Visual Studio", "category": "Tools", "proficiency": 90, "tags": ["Daily driver", ".NET IDE"] },
+  { "id": "sk-vscode", "name": "Visual Studio Code", "category": "Tools", "proficiency": 93, "tags": ["Daily driver", "Editor"] },
+  { "id": "sk-rider", "name": "JetBrains Rider", "category": "Tools", "proficiency": 90, "tags": ["Daily driver", ".NET IDE"] },
+  { "id": "sk-postman", "name": "Postman", "category": "Tools", "proficiency": 88, "tags": ["Daily driver", "API testing"] },
+
   { "id": "sk-figma", "name": "Figma", "category": "Design", "proficiency": 90, "tags": ["Production", "Prototyping"] },
   { "id": "sk-uiux", "name": "UI/UX Design", "category": "Design", "proficiency": 90, "tags": ["Lead", "Design systems"] },
-  { "id": "sk-postman", "name": "Postman", "category": "Design", "proficiency": 88, "tags": ["Daily driver", "API testing"] },
-  { "id": "sk-rider", "name": "JetBrains Rider", "category": "Design", "proficiency": 90, "tags": ["Daily driver", ".NET IDE"] },
-  { "id": "sk-vscode", "name": "Visual Studio Code", "category": "Design", "proficiency": 93, "tags": ["Daily driver", "Editor"] },
   { "id": "sk-jira", "name": "Jira", "category": "Design", "proficiency": 87, "tags": ["Daily driver", "Agile"] },
   { "id": "sk-confluence", "name": "Confluence", "category": "Design", "proficiency": 85, "tags": ["Daily driver", "Docs"] },
   { "id": "sk-miro", "name": "Miro", "category": "Design", "proficiency": 84, "tags": ["Production", "Workshops"] },

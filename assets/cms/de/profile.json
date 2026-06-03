@@ -40,6 +40,7 @@
     "MS-012 · Microsoft KI & Copilot für Microsoft 365",
     "IREB CPRE-FL · Certified Professional for Requirements Engineering"
   ],
+  "showOpenForWork": false,
   "languages": [
     {
       "language": "Deutsch",
