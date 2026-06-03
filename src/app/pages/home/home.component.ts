@@ -22,26 +22,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
     FooterComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <a
-      href="#about"
-      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-gs-crimson-700 focus:px-4 focus:py-2 focus:text-white"
-      >{{ i18n.t('common.skipToContent') }}</a
-    >
-
-    <div id="top" class="theme-transition flex min-h-screen flex-col">
-      <app-header [socials]="profile()?.socials ?? []" />
-
-      <main class="flex-1">
-        <app-hero [profile]="profile() ?? null" />
-        <app-timeline [milestones]="timeline()" />
-        <app-skills [skills]="skills()" />
-        <app-projects [projects]="projects()" />
-      </main>
-
-      <app-footer [socials]="profile()?.socials ?? []" />
-    </div>
-  `
+  templateUrl: './home.component.html'
 })
 export class HomeComponent {
   private readonly cms = inject(CmsService);

@@ -10,6 +10,7 @@ export type SkillCategory =
   | 'Backend'
   | 'Cloud'
   | 'Data'
+  | 'Tools'
   | 'Design';
 
 export interface Skill {
@@ -76,4 +77,5 @@ export interface Profile {
   socials: SocialLink[];
   certifications: string[];
   languages: { language: string; level: string }[];
+  showOpenForWork: boolean;
 }

@@ -21,73 +21,7 @@ type LegalKind = 'privacy' | 'gdpr';
   standalone: true,
   imports: [NgIf, RouterLink, MarkdownComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <div class="theme-transition min-h-screen bg-canvas">
-      <!-- Slim branded header -->
-      <header class="glass sticky top-0 z-40">
-        <div
-          class="h-0.5 w-full bg-gradient-to-r from-gs-crimson-700 via-gs-crimson-500 to-gs-gold-400"
-        ></div>
-        <div class="mx-auto flex h-16 max-w-3xl items-center justify-between px-4 sm:px-6">
-          <a
-            routerLink="/"
-            class="flex items-center gap-2.5"
-            [attr.aria-label]="i18n.t('legal.backToPortfolio')"
-          >
-            <span
-              class="grid h-9 w-9 place-items-center rounded-xl bg-gs-crimson-700 font-extrabold text-white"
-              >SÖ</span
-            >
-            <span class="text-sm font-bold">Salih Özdemir</span>
-          </a>
-          <a
-            routerLink="/"
-            fragment="projects"
-            class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-content-muted transition-colors duration-300 hover:text-gs-crimson-700 dark:hover:text-gs-gold-400"
-          >
-            <i class="pi pi-arrow-left text-xs"></i> {{ i18n.t('legal.backToProjects') }}
-          </a>
-        </div>
-      </header>
-
-      <main class="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-        <ng-container *ngIf="vm() as v">
-          <p class="section-eyebrow">
-            {{ v.project?.title }} ·
-            {{ kind() === 'privacy' ? i18n.t('legal.privacy') : i18n.t('legal.gdpr') }}
-          </p>
-
-          <article
-            *ngIf="v.content; else missing"
-            class="card prose-portfolio mt-4 border-t-4 border-t-gs-crimson-600 p-6 sm:p-10"
-          >
-            <markdown [data]="v.content"></markdown>
-          </article>
-
-          <ng-template #missing>
-            <div class="card mt-4 p-10 text-center">
-              <i class="pi pi-file-excel mb-3 text-3xl text-gs-gold-500"></i>
-              <h1 class="text-xl font-bold">{{ i18n.t('legal.unavailableTitle') }}</h1>
-              <p class="mt-2 text-content-muted">
-                {{
-                  kind() === 'privacy'
-                    ? i18n.t('legal.unavailablePrivacy')
-                    : i18n.t('legal.unavailableGdpr')
-                }}
-              </p>
-              <a
-                routerLink="/"
-                fragment="projects"
-                class="mt-6 inline-flex items-center gap-2 rounded-xl bg-gs-crimson-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-gs-crimson-800"
-              >
-                <i class="pi pi-arrow-left"></i> {{ i18n.t('legal.backToProjects') }}
-              </a>
-            </div>
-          </ng-template>
-        </ng-container>
-      </main>
-    </div>
-  `
+  templateUrl: './legal-page.component.html'
 })
 export class LegalPageComponent {
   private readonly route = inject(ActivatedRoute);

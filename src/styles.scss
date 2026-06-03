@@ -89,9 +89,11 @@
     @apply text-sm font-semibold uppercase tracking-[0.2em] text-gs-gold-600 dark:text-gs-gold-400;
   }
 
-  /* Crimson gradient text used for the name / key headings. */
+  /* Crimson→gold gradient text (name / key headings) with a slow idle shimmer.
+     Colours wrap (crimson → gold → crimson) so the panning loop is seamless. */
   .text-brand-gradient {
-    @apply bg-gradient-to-r from-gs-crimson-700 via-gs-crimson-500 to-gs-gold-500 bg-clip-text text-transparent;
+    @apply animate-gradient-pan bg-gradient-to-r from-gs-crimson-700 via-gs-gold-500 to-gs-crimson-700 bg-clip-text text-transparent;
+    background-size: 200% auto;
   }
 
   /* ── Lightweight prose styles for ngx-markdown output ──────────────────── */
@@ -198,27 +200,109 @@
   border-radius: 1rem;
 }
 
-/* ----------------------------------------------------------------------------
-   SelectButton (skills category filter) — render each option as its own
-   clipped, rounded pill so the ripple stays within the highlighted option
-   instead of spanning the whole button bar.
-   -------------------------------------------------------------------------- */
-.category-select.p-selectbutton {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  border: 0;
-  background: transparent;
+/* Skills category filter — custom Tailwind chip buttons (see skills.component.ts).
+   Suppress the focus ring (PrimeNG's styled-mode global focus outline/box-shadow
+   otherwise flashes on click), while preserving the active chip's brand glow. */
+.skill-chip {
+  -webkit-tap-highlight-color: transparent;
 }
-.category-select .p-togglebutton,
-.category-select .p-button {
+.skill-chip:focus,
+.skill-chip:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.skill-chip[aria-pressed='true'],
+.skill-chip[aria-pressed='true']:focus,
+.skill-chip[aria-pressed='true']:focus-visible {
+  /* matches Tailwind `shadow-glow` so the selected chip keeps its glow */
+  box-shadow: 0 0 0 1px rgba(168, 6, 51, 0.15),
+    0 12px 32px -12px rgba(168, 6, 51, 0.45) !important;
+}
+
+/* Primary CTA — a slow shine sweep across the button. */
+.cta-shine {
   position: relative;
-  overflow: hidden; /* clip the ripple (.p-ink) to this pill */
-  border-radius: 9999px !important;
-  border: 1px solid rgb(var(--hairline));
-  margin: 0;
+  overflow: hidden;
+  isolation: isolate;
 }
-.category-select .p-togglebutton .p-ink,
-.category-select .p-button .p-ink {
-  background: rgba(168, 6, 51, 0.25);
+.cta-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 65%
+  );
+  background-size: 220% 100%;
+  animation: shimmer 3.2s ease-in-out infinite;
+}
+
+/* Animated gradient border for interactive elements (cards, buttons, inputs).
+   Uses a masked ::before ring so it overlays without affecting layout; the
+   gradient pans while visible. Shown on hover / focus-within. */
+.anim-border {
+  position: relative;
+}
+.anim-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 0.75px;
+  background: linear-gradient(
+    120deg,
+    rgb(var(--gs-crimson)),
+    rgb(var(--gs-gold)),
+    rgb(var(--gs-crimson))
+  );
+  background-size: 220% 100%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  animation: gradient-pan 4s linear infinite;
+}
+.anim-border:hover::before,
+.anim-border:focus-within::before {
+  opacity: 1;
+}
+
+/* Faint animated ambient glow blobs for section backgrounds. */
+.bg-ambient {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.bg-ambient > * {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+}
+
+/* Respect users who prefer reduced motion — pause the ambient idle loops. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-pan,
+  .animate-drift-a,
+  .animate-drift-b,
+  .animate-float,
+  .animate-pulse-soft,
+  .animate-pulse-node,
+  .animate-spin-slow,
+  .animate-wiggle,
+  .animate-bob-x,
+  .animate-shimmer {
+    animation: none !important;
+  }
+  .cta-shine::after,
+  .anim-border::before {
+    animation: none !important;
+  }
 }

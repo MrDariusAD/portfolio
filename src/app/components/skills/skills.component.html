@@ -1,0 +1,74 @@
+    <section id="skills" class="relative overflow-hidden scroll-mt-20 border-t border-hairline">
+      <div aria-hidden="true" class="bg-ambient">
+        <div class="animate-drift-b -right-24 top-0 h-72 w-72 bg-gs-gold-400/10"></div>
+        <div class="animate-drift-a -left-16 bottom-8 h-64 w-64 bg-gs-crimson-500/10"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <header class="max-w-2xl">
+          <p class="section-eyebrow">{{ i18n.t('skills.eyebrow') }}</p>
+          <h2 class="section-title mt-2">{{ i18n.t('skills.title') }}</h2>
+          <p class="mt-3 text-content-muted">{{ introText() }}</p>
+        </header>
+
+        <!-- Controls -->
+        <div class="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <span class="anim-border relative block w-full rounded-lg lg:max-w-sm">
+            <i
+              class="pi pi-search absolute left-3 top-1/2 z-10 -translate-y-1/2 text-content-muted"
+            ></i>
+            <input
+              type="text"
+              pInputText
+              [formControl]="search"
+              [placeholder]="i18n.t('skills.searchPlaceholder')"
+              class="w-full !rounded-lg !pl-10"
+              [attr.aria-label]="i18n.t('skills.searchAria')"
+            />
+          </span>
+
+          <!-- Custom category chips (full control over outline + active state) -->
+          <div
+            class="flex flex-wrap gap-2"
+            role="group"
+            [attr.aria-label]="i18n.t('skills.filterAria')"
+          >
+            <button
+              *ngFor="let opt of categoryOptions()"
+              type="button"
+              (click)="setCategory(opt.value)"
+              [attr.aria-pressed]="category() === opt.value"
+              class="skill-chip rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-300 ease-in-out"
+              [ngClass]="
+                category() === opt.value
+                  ? 'border border-gs-crimson-700 bg-gs-crimson-700 text-white shadow-glow dark:border-gs-crimson-600 dark:bg-gs-crimson-600'
+                  : 'border border-hairline bg-surface text-content-muted hover:-translate-y-0.5 hover:border-gs-gold-400 hover:text-gs-crimson-700 dark:hover:text-gs-gold-400'
+              "
+            >
+              {{ opt.label }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Result count -->
+        <p class="mt-6 text-sm text-content-muted">
+          {{ i18n.t('skills.showing') }}
+          <span class="font-semibold text-content">{{ filtered().length }}</span>
+          {{ filtered().length === 1 ? i18n.t('skills.skill') : i18n.t('skills.skills') }}
+        </p>
+
+        <!-- Grid -->
+        <div
+          *ngIf="filtered().length; else empty"
+          class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          <app-skill-card *ngFor="let s of filtered(); trackBy: trackById" [skill]="s" />
+        </div>
+
+        <ng-template #empty>
+          <div class="mt-4 card p-10 text-center text-content-muted">
+            <i class="pi pi-inbox mb-3 text-3xl text-gs-gold-500"></i>
+            <p>{{ emptyText() }}</p>
+          </div>
+        </ng-template>
+      </div>
+    </section>

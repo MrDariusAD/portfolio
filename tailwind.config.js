@@ -67,11 +67,57 @@ module.exports = {
         'pulse-node': {
           '0%, 100%': { boxShadow: '0 0 0 0 rgba(168, 6, 51, 0.5)' },
           '50%': { boxShadow: '0 0 0 10px rgba(168, 6, 51, 0)' }
+        },
+        // ── Idle / ambient loops (play continuously, no scroll needed) ──────
+        'gradient-pan': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' }
+        },
+        'drift-a': {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: '0.8' },
+          '50%': { transform: 'translate(60px, -45px) scale(1.28)', opacity: '1' }
+        },
+        'drift-b': {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: '0.75' },
+          '50%': { transform: 'translate(-66px, 42px) scale(1.32)', opacity: '1' }
+        },
+        float: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: '0.7' },
+          '50%': { transform: 'translate(34px, -16px) scale(1.2)', opacity: '1' }
+        },
+        'pulse-soft': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.55' }
+        },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' }
+        },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-6deg)' },
+          '50%': { transform: 'rotate(6deg)' }
+        },
+        'bob-x': {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(4px)' }
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-150% 0' },
+          '100%': { backgroundPosition: '250% 0' }
         }
       },
       animation: {
         'fade-in-up': 'fade-in-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) both',
-        'pulse-node': 'pulse-node 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        'pulse-node': 'pulse-node 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient-pan': 'gradient-pan 7s ease-in-out infinite',
+        'drift-a': 'drift-a 13s ease-in-out infinite',
+        'drift-b': 'drift-b 17s ease-in-out infinite',
+        float: 'float 9s ease-in-out infinite',
+        'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
+        'spin-slow': 'spin-slow 22s linear infinite',
+        wiggle: 'wiggle 2.5s ease-in-out infinite',
+        'bob-x': 'bob-x 1.6s ease-in-out infinite',
+        shimmer: 'shimmer 2.8s ease-in-out infinite'
       }
     }
   },

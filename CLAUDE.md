@@ -131,8 +131,9 @@ How it's wired:
 Interfaces in `src/app/core/models.ts` are the contract; the mock JSON and the Payload
 schemas (`cms/`) mirror them 1:1.
 
-- **Skill:** `id, name, category('Languages'|'Frontend'|'Backend'|'Cloud'|'Data'|'Design'),
-  proficiency(1–100), tags[]`. Language-agnostic → single shared `skills.json`. Tags are
+- **Skill:** `id, name, category('Languages'|'Frontend'|'Backend'|'Cloud'|'Data'|'Tools'|'Design'),
+  proficiency(1–100), tags[]`. ("Tools" = IDEs/editors/dev tools like Visual Studio, VS Code,
+  Rider, Postman; "Design" = Figma, UI/UX, Jira, Confluence, Miro, Agile.) Language-agnostic → single shared `skills.json`. Tags are
   **hybrid**: one usage-context tag (`Daily driver`/`Lead`/`Production`/`Side projects`/
   `Learning`/`Certified`) plus 1–2 tech tags. Category labels live in i18n `category.*`
   (the `SkillCategory` value is the key suffix, capitalised). Certs and domains (e.g. XMeld)
@@ -163,6 +164,11 @@ repo and emits ready-to-paste EN + DE `Project` JSON (summary, first-person desc
 techStack, optional lifecycle, and privacy/GDPR markdown when personal data is processed),
 matching this portfolio's schema and voice. Append the `en`/`de` objects to the respective
 `projects.json` arrays.
+
+There's also a companion user-level skill **`privacy-policy`** (`~/.claude/skills/privacy-policy/`)
+— run it inside an app repo to generate a full standalone, GDPR/DSGVO-compliant privacy
+policy (EN + DE, `PRIVACY.en.md` / `PRIVACY.de.md`) from what the repo actually processes.
+Its condensed form can feed a project's `privacyPolicyMarkdown`.
 
 ---
 
@@ -199,9 +205,11 @@ These came from explicit owner feedback during development — honour them.
    `current` child (adessoGPT) with its parent auto-expanded. Both a current parent and a
    current child may show the "NOW" badge.
 
-5. **Skills category filter:** the `p-selectButton` uses `styleClass="category-select"`,
-   styled in `styles.scss` as **separate rounded pills with a gap** so the ripple clips to
-   each option instead of spanning the whole bar.
+5. **Skills category filter:** custom Tailwind **chip buttons** (not PrimeNG
+   `p-selectButton`) in `skills.component.ts` — a `category` signal + `setCategory()`, with
+   the active chip filled crimson (white text) and idle chips outlined `border-hairline`.
+   This was a deliberate replacement: the PrimeNG select-button's outline/active styling
+   couldn't be made clean. Keep it custom.
 
 6. **i18n is custom and signal-based.** `TranslationService.t(key)` reads the `lang` and
    `dict` signals, so any template calling `i18n.t('…')` is reactive — even **OnPush**
@@ -216,6 +224,8 @@ These came from explicit owner feedback during development — honour them.
 
 8. **Angular style:** standalone components, `ChangeDetectionStrategy.OnPush`, signals
    (`signal`/`computed`/`effect`), `input()`/`output()` functions, `inject()` for DI.
+   **Templates live in external `.html` files** (`templateUrl`), one per component — no
+   inline `template:` strings. `angular.json` sets `inlineTemplate: false` for new components.
 
 ### Angular-18-specific gotchas (already handled — keep in mind)
 - Use the **`APP_INITIALIZER`** token, **not** `provideAppInitializer` (that's an Angular
