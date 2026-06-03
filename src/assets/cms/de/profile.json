@@ -41,8 +41,17 @@
     "IREB CPRE-FL · Certified Professional for Requirements Engineering"
   ],
   "languages": [
-    { "language": "Deutsch", "level": "C2 — Muttersprache" },
-    { "language": "Englisch", "level": "C1 — Verhandlungssicher" },
-    { "language": "Türkisch", "level": "B2 — Fließend" }
+    {
+      "language": "Deutsch",
+      "level": "C2 — Muttersprache"
+    },
+    {
+      "language": "Englisch",
+      "level": "C1 — Verhandlungssicher"
+    },
+    {
+      "language": "Türkisch",
+      "level": "B2 — Fließend"
+    }
   ]
 }
