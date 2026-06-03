@@ -38,11 +38,12 @@
   "skills.proficiency": "Proficiency",
 
   "category.all": "All",
-  "category.frontend": "Frontend",
-  "category.backend": "Backend",
-  "category.databases": "Databases",
-  "category.devops": "DevOps",
-  "category.tools": "Tools & Design",
+  "category.languages": "Languages",
+  "category.frontend": "Frontend & UI",
+  "category.backend": "Backend & Architecture",
+  "category.cloud": "Cloud & DevOps",
+  "category.data": "Data & Storage",
+  "category.design": "Design & Collaboration",
 
   "projects.eyebrow": "Side Quests",
   "projects.title": "Personal projects",
