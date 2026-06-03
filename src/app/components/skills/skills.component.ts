@@ -107,11 +107,12 @@ export class SkillsComponent {
 
   private readonly categoryKeys: { key: string; value: CategoryValue }[] = [
     { key: 'category.all', value: 'All' },
+    { key: 'category.languages', value: 'Languages' },
     { key: 'category.frontend', value: 'Frontend' },
     { key: 'category.backend', value: 'Backend' },
-    { key: 'category.databases', value: 'Databases' },
-    { key: 'category.devops', value: 'DevOps' },
-    { key: 'category.tools', value: 'Tools_Design' }
+    { key: 'category.cloud', value: 'Cloud' },
+    { key: 'category.data', value: 'Data' },
+    { key: 'category.design', value: 'Design' }
   ];
 
   /** Recomputed on language change so the chip labels stay translated. */

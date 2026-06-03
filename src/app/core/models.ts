@@ -5,11 +5,12 @@
    ========================================================================== */
 
 export type SkillCategory =
+  | 'Languages'
   | 'Frontend'
   | 'Backend'
-  | 'DevOps'
-  | 'Databases'
-  | 'Tools_Design';
+  | 'Cloud'
+  | 'Data'
+  | 'Design';
 
 export interface Skill {
   id: string;

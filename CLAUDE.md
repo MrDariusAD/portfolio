@@ -131,8 +131,12 @@ How it's wired:
 Interfaces in `src/app/core/models.ts` are the contract; the mock JSON and the Payload
 schemas (`cms/`) mirror them 1:1.
 
-- **Skill:** `id, name, category('Frontend'|'Backend'|'DevOps'|'Databases'|'Tools_Design'),
-  proficiency(1–100), tags[]`. Language-agnostic → single shared `skills.json`.
+- **Skill:** `id, name, category('Languages'|'Frontend'|'Backend'|'Cloud'|'Data'|'Design'),
+  proficiency(1–100), tags[]`. Language-agnostic → single shared `skills.json`. Tags are
+  **hybrid**: one usage-context tag (`Daily driver`/`Lead`/`Production`/`Side projects`/
+  `Learning`/`Certified`) plus 1–2 tech tags. Category labels live in i18n `category.*`
+  (the `SkillCategory` value is the key suffix, capitalised). Certs and domains (e.g. XMeld)
+  are **not** skills — they live in Certifications / the timeline.
 - **Project:** `id, slug, title, icon, shortSummary, fullDescription(markdown), techStack[],
   githubUrl?, linkedInUrl?, emailUrl?, discordUrl?, hasPrivacyPolicy + privacyPolicyMarkdown?,
   hasGdprInstructions + gdprInstructionsMarkdown?, lifecycle?[]`.

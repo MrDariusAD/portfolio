@@ -13,30 +13,35 @@ const CATEGORY_META: Record<
   SkillCategory,
   { labelKey: string; icon: string; classes: string }
 > = {
+  Languages: {
+    labelKey: 'category.languages',
+    icon: 'pi pi-code',
+    classes: 'bg-gs-crimson-500/10 text-gs-crimson-700 dark:text-gs-crimson-300'
+  },
   Frontend: {
     labelKey: 'category.frontend',
     icon: 'pi pi-palette',
-    classes: 'bg-gs-crimson-500/10 text-gs-crimson-700 dark:text-gs-crimson-300'
+    classes: 'bg-gs-gold-400/15 text-gs-gold-700 dark:text-gs-gold-300'
   },
   Backend: {
     labelKey: 'category.backend',
-    icon: 'pi pi-server',
-    classes: 'bg-gs-gold-400/15 text-gs-gold-700 dark:text-gs-gold-300'
-  },
-  DevOps: {
-    labelKey: 'category.devops',
-    icon: 'pi pi-cog',
+    icon: 'pi pi-sitemap',
     classes: 'bg-sky-500/10 text-sky-700 dark:text-sky-300'
   },
-  Databases: {
-    labelKey: 'category.databases',
+  Cloud: {
+    labelKey: 'category.cloud',
+    icon: 'pi pi-cloud',
+    classes: 'bg-violet-500/10 text-violet-700 dark:text-violet-300'
+  },
+  Data: {
+    labelKey: 'category.data',
     icon: 'pi pi-database',
     classes: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
   },
-  Tools_Design: {
-    labelKey: 'category.tools',
+  Design: {
+    labelKey: 'category.design',
     icon: 'pi pi-pencil',
-    classes: 'bg-violet-500/10 text-violet-700 dark:text-violet-300'
+    classes: 'bg-rose-500/10 text-rose-700 dark:text-rose-300'
   }
 };
 

@@ -38,11 +38,12 @@
   "skills.proficiency": "Kenntnisstand",
 
   "category.all": "Alle",
-  "category.frontend": "Frontend",
-  "category.backend": "Backend",
-  "category.databases": "Datenbanken",
-  "category.devops": "DevOps",
-  "category.tools": "Tools & Design",
+  "category.languages": "Sprachen",
+  "category.frontend": "Frontend & UI",
+  "category.backend": "Backend & Architektur",
+  "category.cloud": "Cloud & DevOps",
+  "category.data": "Daten & Speicher",
+  "category.design": "Design & Zusammenarbeit",
 
   "projects.eyebrow": "Nebenprojekte",
   "projects.title": "Persönliche Projekte",
