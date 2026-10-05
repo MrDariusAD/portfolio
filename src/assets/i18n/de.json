@@ -11,12 +11,11 @@
   "common.switchToDark": "Zum dunklen Modus wechseln",
   "common.language": "Sprache",
   "common.switchLanguage": "Zu Englisch wechseln",
-
+  "common.close": "Schließen",
   "hero.badge": "Offen für wirkungsvolle Engineering-Aufgaben",
   "hero.greeting": "Hi, ich bin",
   "hero.certifications": "Zertifizierungen",
   "hero.languages": "Sprachen",
-
   "timeline.eyebrow": "Der Werdegang",
   "timeline.title": "Eine interaktive Karriere-Timeline",
   "timeline.intro": "Sieben Jahre Wandel — vom dualen Studium mit Ausbildung bis zur Leitung von Senior-Engineering und KI-Enablement. Wähle eine Station, um Tech-Stack, Aufgaben und Verantwortlichkeiten zu erkunden.",
@@ -24,19 +23,25 @@
   "timeline.responsibilities": "Wesentliche Aufgaben",
   "timeline.techStack": "Tech-Stack",
   "timeline.ariaMilestones": "Karriere-Stationen",
-
   "skills.eyebrow": "Werkzeugkasten",
   "skills.title": "Eine filter- und durchsuchbare Skill-Matrix",
   "skills.intro": "{count} Tools und Frameworks aus sieben Jahren Projektarbeit. Suche nach Name oder Tag oder filtere nach Kategorie.",
   "skills.searchPlaceholder": "Skills suchen (z. B. Angular, AWS, DDD)…",
   "skills.searchAria": "Skills suchen",
   "skills.filterAria": "Nach Kategorie filtern",
+  "skills.viewAria": "Ansicht",
+  "skills.view.bento": "Bento",
+  "skills.view.grid": "Raster",
+  "skills.sortAria": "Skills sortieren",
+  "skills.sort.mix": "Mix",
+  "skills.sort.level": "Level",
+  "skills.sort.az": "A–Z",
+  "skills.sort.category": "Kategorie",
   "skills.showing": "Es werden",
   "skills.skill": "Skill angezeigt",
   "skills.skills": "Skills angezeigt",
   "skills.empty": "Keine Skills passen zu „{query}“. Versuche einen anderen Begriff.",
   "skills.proficiency": "Kenntnisstand",
-
   "category.all": "Alle",
   "category.languages": "Sprachen",
   "category.frontend": "Frontend & UI",
@@ -45,7 +50,6 @@
   "category.data": "Daten & Speicher",
   "category.tools": "Werkzeuge",
   "category.design": "Design & Zusammenarbeit",
-
   "projects.eyebrow": "Nebenprojekte",
   "projects.title": "Persönliche Projekte",
   "projects.intro": "Eine Galerie eigeninitiativer Produkte — von plattformübergreifenden Apps über Echtzeit-Kollaboration bis hin zu KI. Öffne eine Karte für die Details.",
@@ -57,10 +61,8 @@
   "projects.privacy": "Datenschutz",
   "projects.privacyPolicy": "Datenschutzerklärung",
   "projects.gdpr": "DSGVO",
-
   "footer.role": "Senior Software Engineer · Düsseldorf · Umgesetzt mit Angular, Tailwind & PrimeNG.",
   "footer.rights": "Alle Rechte vorbehalten.",
-
   "legal.backToProjects": "Zurück zu den Projekten",
   "legal.backToPortfolio": "Zurück zum Portfolio",
   "legal.privacy": "Datenschutz",
@@ -68,7 +70,6 @@
   "legal.unavailableTitle": "Dokument nicht verfügbar",
   "legal.unavailablePrivacy": "Für dieses Projekt ist keine Datenschutzerklärung veröffentlicht.",
   "legal.unavailableGdpr": "Für dieses Projekt ist kein DSGVO-Dokument veröffentlicht.",
-
   "notFound.title": "Diese Seite hat sich verirrt.",
   "notFound.subtitle": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
   "notFound.home": "Zur Startseite"

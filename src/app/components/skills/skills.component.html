@@ -1,74 +1,183 @@
-    <section id="skills" class="relative overflow-hidden scroll-mt-20 border-t border-hairline">
-      <div aria-hidden="true" class="bg-ambient">
-        <div class="animate-drift-b -right-24 top-0 h-72 w-72 bg-gs-gold-400/10"></div>
-        <div class="animate-drift-a -left-16 bottom-8 h-64 w-64 bg-gs-crimson-500/10"></div>
+<section id="skills" class="relative scroll-mt-20">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <header appReveal>
+      <p class="section-eyebrow">{{ i18n.t('skills.eyebrow') }}</p>
+      <h2 class="section-title">{{ i18n.t('skills.title') }}</h2>
+      <p class="section-intro">{{ introText() }}</p>
+    </header>
+
+    <!-- Controls -->
+    <div class="mt-8 grid gap-4" appReveal [revealDelay]="1">
+      <div class="flex flex-wrap items-center gap-3">
+        <label class="int-field min-w-0 flex-[1_1_260px]">
+          <app-icon name="search" />
+          <input
+            type="search"
+            [formControl]="search"
+            [placeholder]="i18n.t('skills.searchPlaceholder')"
+            [attr.aria-label]="i18n.t('skills.searchAria')"
+          />
+        </label>
+
+        <div class="seg" role="group" [attr.aria-label]="i18n.t('skills.viewAria')">
+          <button type="button" appRipple [attr.aria-pressed]="view() === 'bento'" (click)="setView('bento')">
+            <app-icon name="dashboard" />{{ i18n.t('skills.view.bento') }}
+          </button>
+          <button type="button" appRipple [attr.aria-pressed]="view() === 'grid'" (click)="setView('grid')">
+            <app-icon name="grid_view" />{{ i18n.t('skills.view.grid') }}
+          </button>
+        </div>
       </div>
-      <div class="relative z-10 mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <header class="max-w-2xl">
-          <p class="section-eyebrow">{{ i18n.t('skills.eyebrow') }}</p>
-          <h2 class="section-title mt-2">{{ i18n.t('skills.title') }}</h2>
-          <p class="mt-3 text-content-muted">{{ introText() }}</p>
-        </header>
 
-        <!-- Controls -->
-        <div class="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <span class="anim-border relative block w-full rounded-lg lg:max-w-sm">
-            <i
-              class="pi pi-search absolute left-3 top-1/2 z-10 -translate-y-1/2 text-content-muted"
-            ></i>
-            <input
-              type="text"
-              pInputText
-              [formControl]="search"
-              [placeholder]="i18n.t('skills.searchPlaceholder')"
-              class="w-full !rounded-lg !pl-10"
-              [attr.aria-label]="i18n.t('skills.searchAria')"
-            />
-          </span>
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <!-- Category chips: the active pill is a clipped copy that travels -->
+        <div class="cat-track min-w-0" role="group" [attr.aria-label]="i18n.t('skills.filterAria')">
+          <div class="cat-row" #catRow>
+            @for (opt of categoryOptions(); track opt.value) {
+              <button
+                type="button"
+                class="cat"
+                appRipple
+                [attr.data-cat]="opt.value"
+                [attr.aria-pressed]="category() === opt.value"
+                (click)="setCategory(opt.value)"
+              >
+                {{ opt.label }}<span class="n">{{ opt.count }}</span>
+              </button>
+            }
+          </div>
+          <div class="cat-row cat-active" #catActive aria-hidden="true">
+            @for (opt of categoryOptions(); track opt.value) {
+              <span class="cat">{{ opt.label }}<span class="n">{{ opt.count }}</span></span>
+            }
+          </div>
+        </div>
 
-          <!-- Custom category chips (full control over outline + active state) -->
-          <div
-            class="flex flex-wrap gap-2"
-            role="group"
-            [attr.aria-label]="i18n.t('skills.filterAria')"
-          >
+        <div class="seg" role="group" [attr.aria-label]="i18n.t('skills.sortAria')">
+          @for (o of sortOptions(); track o.value) {
             <button
-              *ngFor="let opt of categoryOptions()"
               type="button"
-              (click)="setCategory(opt.value)"
-              [attr.aria-pressed]="category() === opt.value"
-              class="skill-chip rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-300 ease-in-out"
-              [ngClass]="
-                category() === opt.value
-                  ? 'border border-gs-crimson-700 bg-gs-crimson-700 text-white shadow-glow dark:border-gs-crimson-600 dark:bg-gs-crimson-600'
-                  : 'border border-hairline bg-surface text-content-muted hover:-translate-y-0.5 hover:border-gs-gold-400 hover:text-gs-crimson-700 dark:hover:text-gs-gold-400'
-              "
+              appRipple
+              [attr.aria-pressed]="sort() === o.value"
+              [attr.aria-label]="o.label"
+              [title]="o.label"
+              (click)="setSort(o.value)"
             >
-              {{ opt.label }}
+              <app-icon [name]="o.icon" /><span class="hidden sm:inline">{{ o.label }}</span>
             </button>
-          </div>
+          }
         </div>
-
-        <!-- Result count -->
-        <p class="mt-6 text-sm text-content-muted">
-          {{ i18n.t('skills.showing') }}
-          <span class="font-semibold text-content">{{ filtered().length }}</span>
-          {{ filtered().length === 1 ? i18n.t('skills.skill') : i18n.t('skills.skills') }}
-        </p>
-
-        <!-- Grid -->
-        <div
-          *ngIf="filtered().length; else empty"
-          class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          <app-skill-card *ngFor="let s of filtered(); trackBy: trackById" [skill]="s" />
-        </div>
-
-        <ng-template #empty>
-          <div class="mt-4 card p-10 text-center text-content-muted">
-            <i class="pi pi-inbox mb-3 text-3xl text-gs-gold-500"></i>
-            <p>{{ emptyText() }}</p>
-          </div>
-        </ng-template>
       </div>
-    </section>
+    </div>
+
+    <p class="mt-6 text-sm" style="color: var(--int-on-surface-variant)">
+      {{ i18n.t('skills.showing') }}
+      <b class="mono" style="color: var(--int-on-surface)">{{ filtered().length }}</b>
+      {{ filtered().length === 1 ? i18n.t('skills.skill') : i18n.t('skills.skills') }}
+    </p>
+
+    <div class="mt-4" #items appReveal [revealDelay]="2" (revealed)="drawn.set(true)">
+      @if (!filtered().length) {
+        <div
+          class="grid place-items-center gap-3 rounded-[20px] border border-dashed p-10 text-center"
+          style="border-color: var(--int-hair); color: var(--int-on-surface-variant)"
+        >
+          <app-icon name="inbox" class="text-3xl" style="color: var(--int-tertiary)" />
+          <p>{{ emptyText() }}</p>
+        </div>
+      } @else if (view() === 'bento') {
+        <div class="bento" [class.is-drawn]="drawn()">
+          @for (t of tiles(); track t.skill.id; let i = $index) {
+            <article
+              [class]="'tile s-' + t.shape + ' ' + t.face"
+              [attr.data-skill]="t.skill.id"
+              [style.--i]="i"
+              [style.--p]="t.skill.proficiency / 100"
+              [attr.aria-label]="t.skill.name + ', ' + t.skill.proficiency + ' / 100'"
+            >
+              <app-icon class="tile-deco" [name]="t.icon.symbol" [brand]="t.icon.brand" />
+
+              @switch (t.shape) {
+                @case ('big') {
+                  <div class="tile-top">
+                    <app-icon class="tile-ico" [name]="t.icon.symbol" [brand]="t.icon.brand" />
+                    <span class="tile-num tile-num-lg">{{ t.skill.proficiency }}</span>
+                  </div>
+                  <div class="tile-push">
+                    <p class="tile-sub">{{ i18n.t('category.' + t.skill.category.toLowerCase()) }}</p>
+                    <h3 class="tile-name">{{ t.skill.name }}</h3>
+                    <p class="tile-ctx">{{ t.ctx }}</p>
+                  </div>
+                  <div class="tile-tags">
+                    @for (tag of t.tech; track tag) {
+                      <span class="tile-tag">{{ tag }}</span>
+                    }
+                  </div>
+                }
+                @case ('tall') {
+                  <div class="tile-top">
+                    <app-icon class="tile-ico text-[30px]" [name]="t.icon.symbol" [brand]="t.icon.brand" />
+                    <span class="tile-num tile-num-lg">{{ t.skill.proficiency }}</span>
+                  </div>
+                  <div class="tile-push">
+                    <p class="tile-sub">{{ t.ctx }}</p>
+                    <h3 class="tile-name">{{ t.skill.name }}</h3>
+                  </div>
+                  <div class="tile-tags">
+                    @for (tag of t.tech.slice(0, 2); track tag) {
+                      <span class="tile-tag">{{ tag }}</span>
+                    }
+                  </div>
+                }
+                @case ('wide') {
+                  <div class="grid min-w-0 gap-1">
+                    <p class="tile-sub">{{ i18n.t('category.' + t.skill.category.toLowerCase()) }} · {{ t.ctx }}</p>
+                    <h3 class="tile-name">{{ t.skill.name }}</h3>
+                    <div class="tile-tags">
+                      @for (tag of t.tech.slice(0, 2); track tag) {
+                        <span class="tile-tag">{{ tag }}</span>
+                      }
+                    </div>
+                  </div>
+                  <div class="lvl-ring" aria-hidden="true">
+                    <svg viewBox="0 0 64 64">
+                      <circle class="trk" cx="32" cy="32" r="27" fill="none" stroke-width="6" />
+                      <circle
+                        class="val"
+                        cx="32"
+                        cy="32"
+                        r="27"
+                        fill="none"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                        pathLength="100"
+                        [style.--off]="100 - t.skill.proficiency"
+                      />
+                    </svg>
+                    <span>{{ t.skill.proficiency }}</span>
+                  </div>
+                }
+                @default {
+                  <div class="tile-top">
+                    <p class="tile-sub">{{ t.ctx }}</p>
+                    <span class="tile-num">{{ t.skill.proficiency }}</span>
+                  </div>
+                  <div class="tile-push pb-2.5">
+                    <h3 class="tile-name">{{ t.skill.name }}</h3>
+                  </div>
+                  <div class="tile-meter" aria-hidden="true"><span class="tile-bar"></span></div>
+                }
+              }
+            </article>
+          }
+        </div>
+      } @else {
+        <div class="sk-grid" [class.is-drawn]="drawn()">
+          @for (t of tiles(); track t.skill.id; let i = $index) {
+            <app-skill-card [skill]="t.skill" [icon]="t.icon" [attr.data-skill]="t.skill.id" [style.--i]="i" />
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -11,7 +11,8 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "icons": "node scripts/gen-icons.mjs"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,8 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@primeng/themes": "^18.0.0",
     "marked": "^12.0.2",
     "ngx-markdown": "^18.1.0",
@@ -36,8 +39,10 @@
     "@angular-devkit/build-angular": "^18.2.0",
     "@angular/cli": "^18.2.0",
     "@angular/compiler-cli": "^18.2.0",
+    "@material-symbols/svg-500": "^0.47.6",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
+    "simple-icons": "^16.34.0",
     "tailwindcss": "^3.4.13",
     "tailwindcss-primeui": "^0.3.4",
     "typescript": "~5.5.4"

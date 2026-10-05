@@ -37,7 +37,8 @@ export interface Project {
   privacyPolicyMarkdown?: string;
   hasGdprInstructions: boolean;
   gdprInstructionsMarkdown?: string;
-  /** Optional emoji / icon shorthand used by the gallery card header. */
+  /** The app's real icon (path under /public, e.g. "projects/int-brain.png"), or a
+   *  Material Symbols Rounded name when the app has none. Legacy emoji still render. */
   icon?: string;
   /** Optional ordered lifecycle states (e.g. INT.PrintIt state machine). */
   lifecycle?: string[];
@@ -56,7 +57,8 @@ export interface TimelineMilestone {
   current?: boolean;
   /**
    * Optional nested roles/projects within the same employer/tenure. Rendered
-   * indented under the parent on the timeline and collapsible.
+   * indented under the parent on the timeline and collapsible. Two levels deep at
+   * most: employer → role/product → customer project (adesso → adessoGPT → BVB).
    */
   children?: TimelineMilestone[];
 }

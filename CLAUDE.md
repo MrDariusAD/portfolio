@@ -71,7 +71,7 @@ src/
 │  │  ├─ theme.service.ts       # light/dark, .dark on <html>, persisted
 │  │  ├─ translation.service.ts # EN/DE i18n, signal-based, t() reads signals
 │  │  └─ cms.service.ts         # content gateway (local mock / remote Payload)
-│  ├─ theme/galatasaray.preset.ts  # PrimeNG preset (crimson/gold)
+│  ├─ theme/galatasaray.preset.ts  # PrimeNG preset (INT DS crimson/gold)
 │  ├─ components/
 │  │  ├─ header/   hero/   footer/
 │  │  ├─ timeline/                 # nested, collapsible, newest-first
@@ -99,30 +99,46 @@ cms/                              # Payload CMS v3 schemas (optional, not built 
 
 ---
 
-## 5. Theming — Galatasaray Istanbul colours
+## 5. Theming — INT Design System (Galatasaray crimson + gold)
 
-The brand is the colours of **Galatasaray**:
+The look comes from the **INT Design System** (Material 3 Expressive, seeded from
+Galatasaray), maintained as a design-system project in **Claude Design** ("INT Design
+System"). The site uses its variant **"A · Treu"** (the DS as shipped). Tokens in
+`src/styles.scss` mirror the DS files `tokens/colors.css · motion.css · shape.css …`.
 
-- **Primary / crimson:** `#a80633` — branding, primary buttons, active states, timeline nodes.
-- **Secondary / gold:** `#fbbb20` — borders, tags, hover, subheadings, accents.
-- **Light:** canvas `#f8fafc`, surface `#ffffff`, text `#0f172a`.
-- **Dark:** **warm charcoal with a subtle crimson hint, not slate-blue** (deliberately
-  restrained — not heavy maroon) — canvas `#181317`, surface `#251d22`, surface-muted
-  `#332831`, text `#f6f1f3`, muted `#b3a6ac`, hairline `#3f2f39`. The PrimeNG preset's dark
-  `surface` ramp is a matching warm-charcoal scale so dialogs/inputs/etc. follow suit.
-  Crimson/gold remain accents on top.
+- **Colour roles (light):** primary / ink fill `#7C0320`, primary-container `#9D2235`,
+  brand crimson `#A32638`, gold `#FCB614` (a **fill, never text on light**; gold text uses
+  `--int-xp-ink` `#8F4D00`), page `#FFF8F7`, cards `#FFF0F0`, text `#251819`.
+  Neutrals are warm and rose-tinted, never grey.
+- **Dark:** warm near-black `#1C1011`, cards `#251819`, primary `#FFB3B5`, gold ink `#FCB614`.
+- **Type:** Inter (UI) + JetBrains Mono (every number: periods, levels, counts) — both
+  **self-hosted** via `@fontsource-variable/*` (no Google Fonts → GDPR).
+- **Shape:** cards 16–20px, bento tiles 26px, dialog 28px, buttons/chips pills.
+- **Icons:** Material Symbols Rounded + Simple Icons brand marks, **inlined as SVG paths**
+  (`npm run icons` → `src/app/core/icons.generated.ts`, rendered by `<app-icon>`). Add a
+  name to `scripts/gen-icons.mjs` before using it. PrimeIcons stay only for social logos.
+  No emoji as icons (DS rule for professional contexts).
 
 How it's wired:
-- `tailwind.config.js` exposes `gs.crimson.*` / `gs.gold.*` ramps and semantic tokens
-  (`canvas`, `surface`, `surface-muted`, `content`, `content-muted`, `hairline`) that
-  resolve to CSS variables.
-- `src/styles.scss` defines those variables for `:root` (light) and `html.dark` (dark).
-- `src/app/theme/galatasaray.preset.ts` re-points PrimeNG's `primary` ramp to crimson
-  (light) / gold (dark) so components inherit the brand. `darkModeSelector: '.dark'`.
-- **All state changes animate at `duration-300 ease-in-out`.** Keep this.
-- **Dark mode should lean into the brand colours** (the owner explicitly asked for more
-  colour, especially in dark mode): crimson/gold accent lines, gradient tints, coloured
-  borders. Don't make dark mode flat grey.
+- `src/styles.scss` — `--int-*` tokens for `:root` / `html.dark`, the component classes
+  (`.btn`, `.tile`, `.tl-*`, `.proj`, …) and the legacy Tailwind channels
+  (`canvas`, `surface`, … used by legal/404).
+- `tailwind.config.js` — `gs.crimson.*` / `gs.gold.*` re-pointed to the DS tonal palettes.
+- `src/app/theme/galatasaray.preset.ts` — PrimeNG primary = DS crimson, surfaces = DS warm
+  neutrals. `darkModeSelector: '.dark'`.
+
+### Motion (IntMotion + Emil Kowalski's rules — keep these)
+- Curves: **settle** `cubic-bezier(0.16,1,0.3,1)` for anything entering/landing,
+  **travel** `cubic-bezier(0.5,0,0.2,1)` for moving between places, **standard** for colour.
+  Never `ease-in`, never `transition: all`, never `scale(0)`. UI motion stays < 300ms.
+- **Buttons** use the DS ink-tier physics: gloss edge + shadow at rest, +10% white on hover,
+  −16% black + inset shadow on press (90ms in, 240ms release), plus an ink **ripple**
+  (`appRipple`). No scale on press.
+- One-time motion only: hero stagger (`.rise`), scroll reveal (`appReveal`, once),
+  bars/rings draw when the skills first scroll in. **No infinite decorative loops** (the old
+  drifting blobs, pulsing pins, waving emoji and shimmer were removed on purpose).
+- Hover motion is gated behind `@media (hover: hover) and (pointer: fine)`; every animation
+  has a `prefers-reduced-motion` variant (opacity stays, movement goes).
 
 ---
 
@@ -142,7 +158,7 @@ schemas (`cms/`) mirror them 1:1.
   githubUrl?, linkedInUrl?, emailUrl?, discordUrl?, hasPrivacyPolicy + privacyPolicyMarkdown?,
   hasGdprInstructions + gdprInstructionsMarkdown?, lifecycle?[]`.
 - **TimelineMilestone:** `id, period, organisation, role, title, summary, responsibilities[],
-  techStack[], current?, children?[]` (one level of nesting).
+  techStack[], current?, children?[]` (up to two levels: employer → role/product → customer project).
 - **Profile** (global): `name, title, location, introduction, socials[], certifications[],
   languages[]`.
 
@@ -199,17 +215,24 @@ These came from explicit owner feedback during development — honour them.
    - Net effect this prevents: double-X, double-scrollbar, white border, and "content
      vanishes then shell disappears" dismissal.
 
-4. **Timeline:** newest-first; supports **one level of nested `children`** (roles/projects
-   within an employer). Children render indented on a **second vertical line**, collapsible
-   via a chevron. Selection is by **id** (`selectedId` signal); the default selection is the
-   `current` child (adessoGPT) with its parent auto-expanded. Both a current parent and a
+4. **Timeline:** newest-first; supports **two levels of nested `children`**: roles/projects
+   within an employer, and customer projects within a product (adesso → adessoGPT → Vivawest
+   · BVB · AOK Bayern). Each level renders indented on its own vertical line, collapsible via
+   a chevron. Selection is by **id** (`selectedId` signal); the default selection is the
+   **longest-running** `current` child (adessoGPT, even when newer projects also run) with
+   its parent and its own customer projects auto-expanded. Switching nodes blurs the old detail out (110ms) and settles the
+   new one in; children expand via `grid-template-rows: 0fr → 1fr`. Both a current parent and a
    current child may show the "NOW" badge.
 
-5. **Skills category filter:** custom Tailwind **chip buttons** (not PrimeNG
-   `p-selectButton`) in `skills.component.ts` — a `category` signal + `setCategory()`, with
-   the active chip filled crimson (white text) and idle chips outlined `border-hairline`.
-   This was a deliberate replacement: the PrimeNG select-button's outline/active styling
-   couldn't be made clean. Keep it custom.
+5. **Skills:** default view is an Apple-style **bento** (toggle to a grid). Tile *shape*
+   follows the level (100 → big/tall/wide in rotation, 90–95 → wide with a ring or square,
+   80–89 → square, < 80 → quiet dashed) and is assigned over the **full** list so a tile keeps
+   its look while filtering/sorting; every tile carries its skill's mark large and faint in the
+   corner. Sort: Mix (a rhythm that spreads big tiles) · Level · A–Z · Category. Sort/filter/view
+   changes animate with **FLIP** (WAAPI, travel curve); typing in search does not animate.
+   The category filter stays custom chip buttons (not PrimeNG `p-selectButton`); the active
+   state is a **clipped copy of the chip row** that travels (same technique as the header nav
+   scroll-spy pill).
 
 6. **i18n is custom and signal-based.** `TranslationService.t(key)` reads the `lang` and
    `dict` signals, so any template calling `i18n.t('…')` is reactive — even **OnPush**
@@ -251,7 +274,10 @@ adesso profile doc (German source). **Always first person.**
 - **Career timeline (newest first):**
   1. **adesso SE — 2022–Present**, Senior Software Engineer & AI Expert. Children:
      - *adessoGPT* (2025–Present) — generative-AI enablement & DevOps. **Current role.**
-     - *Gantner DigiRest* (2025–Present) — MaxxLive/MaxxConference (Angular + Telerik/Kendo)
+       Customer projects (second level, real customer names are public by owner decision):
+       *Vivawest Wohnen* CorporateGPT (2026–), *Borussia Dortmund* bvb.de chatbot (2026–),
+       *AOK Bayern* LLM concept for e-mail response management (2026).
+     - *Gantner DigiRest* (2025–2026, ended) — MaxxLive/MaxxConference (Angular + Telerik/Kendo)
        & MaxxApp (Flutter); payment providers (Adyen).
      - *beyonnex.io / BxTrack* (2022–2025) — energy dispatch; **UI Lead**, migrated
        ASP.NET MVC → Blazor Server (MudBlazor); AWS (RDS/EKS/ECR), Terraform, Kafka.
@@ -346,6 +372,7 @@ and `cmsApiUrl`, and ensure CORS allows `oezdemirs.de`.
 | Add/edit a timeline entry or sub-entry | `src/assets/cms/<lang>/timeline.json` |
 | Add/edit a skill | `src/assets/cms/skills.json` (shared) |
 | Add/translate a UI label | `src/assets/i18n/en.json` **and** `de.json` |
-| Tweak brand colours | `tailwind.config.js` + `src/styles.scss` + `galatasaray.preset.ts` |
+| Tweak brand colours | `tailwind.config.js` + `src/styles.scss` + `galatasaray.preset.ts` (keep in sync with the INT Design System in Claude Design) |
+| Add an icon (skill / project) | `scripts/gen-icons.mjs` → `npm run icons`; skill → icon map in `src/app/core/skill-icons.ts`; a project's `icon` is its **real app icon** (128px file in `public/projects/`, e.g. `projects/int-brain.png`), or a Material Symbol name if the app has none |
 | Change the deploy / domain | `.github/workflows/deploy.yml`, `public/CNAME`, DNS |
 ```

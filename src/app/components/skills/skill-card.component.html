@@ -1,45 +1,28 @@
-    <article
-      class="card anim-border theme-transition group h-full p-4 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-gold"
-    >
-      <div class="flex flex-wrap items-start justify-between gap-x-2 gap-y-1.5">
-        <h3 class="min-w-0 break-words font-semibold leading-tight text-content">
-          {{ skill().name }}
-        </h3>
-        <span
-          class="pill shrink-0 whitespace-nowrap text-[10px] font-semibold"
-          [class]="meta().classes"
-        >
-          <i [class]="meta().icon" class="text-[11px]"></i>{{ i18n.t(meta().labelKey) }}
-        </span>
-      </div>
-
-      <!-- Proficiency meter -->
-      <div class="mt-4">
-        <div class="flex items-center justify-between text-xs text-content-muted">
-          <span>{{ i18n.t('skills.proficiency') }}</span>
-          <span class="font-bold text-content">{{ skill().proficiency }}%</span>
-        </div>
-        <div
-          class="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-surface-muted"
-          role="progressbar"
-          [attr.aria-valuenow]="skill().proficiency"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          <div
-            class="h-full rounded-full bg-gradient-to-r from-gs-crimson-700 to-gs-gold-500 transition-all duration-700 ease-in-out"
-            [style.width.%]="skill().proficiency"
-          ></div>
-        </div>
-      </div>
-
-      <!-- Tags -->
-      <div class="mt-4 flex flex-wrap gap-1.5">
-        <span
-          *ngFor="let tag of skill().tags"
-          class="rounded-md border border-hairline px-2 py-0.5 text-[11px] text-content-muted"
-        >
-          {{ tag }}
-        </span>
-      </div>
-    </article>
+<article class="sk-card h-full" [style.--p]="skill().proficiency / 100">
+  <app-icon class="tile-deco" [name]="icon().symbol" [brand]="icon().brand" />
+  <div class="flex items-baseline justify-between gap-2">
+    <h3 class="min-w-0 text-[15px] font-semibold leading-snug" style="overflow-wrap: anywhere">{{ skill().name }}</h3>
+    <span class="mono text-[13px] font-semibold" style="color: var(--int-xp-ink)">{{ skill().proficiency }}</span>
+  </div>
+  <p class="tile-sub mt-0.5">{{ i18n.t('category.' + skill().category.toLowerCase()) }}</p>
+  <div
+    class="sk-meter"
+    role="meter"
+    [attr.aria-valuenow]="skill().proficiency"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    [attr.aria-label]="skill().name + ' — ' + i18n.t('skills.proficiency')"
+  >
+    <span class="sk-bar"></span>
+  </div>
+  <div class="tile-tags">
+    @for (tag of skill().tags; track tag; let first = $first) {
+      <span
+        class="tile-tag"
+        [style.background]="first ? 'var(--int-secondary-container)' : null"
+        [style.color]="first ? 'var(--int-on-secondary-container)' : null"
+        >{{ tag }}</span
+      >
+    }
+  </div>
+</article>

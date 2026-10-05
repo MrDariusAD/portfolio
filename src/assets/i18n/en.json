@@ -11,12 +11,11 @@
   "common.switchToDark": "Switch to dark mode",
   "common.language": "Language",
   "common.switchLanguage": "Switch to German",
-
+  "common.close": "Close",
   "hero.badge": "Available for impactful engineering",
   "hero.greeting": "Hi, I'm",
   "hero.certifications": "Certifications",
   "hero.languages": "Languages",
-
   "timeline.eyebrow": "The Journey",
   "timeline.title": "An interactive career timeline",
   "timeline.intro": "Seven years of transformation — from a dual-study apprenticeship to directing senior engineering and AI enablement. Select a milestone to explore the stack, tasks and responsibilities of that tenure.",
@@ -24,19 +23,25 @@
   "timeline.responsibilities": "Key responsibilities",
   "timeline.techStack": "Tech stack",
   "timeline.ariaMilestones": "Career milestones",
-
   "skills.eyebrow": "Toolbox",
   "skills.title": "A filterable, searchable skills matrix",
   "skills.intro": "{count} tools and frameworks gathered across seven years of projects. Search by name or tag, or filter by category.",
   "skills.searchPlaceholder": "Search skills (e.g. Angular, AWS, DDD)…",
   "skills.searchAria": "Search skills",
   "skills.filterAria": "Filter by category",
+  "skills.viewAria": "Layout",
+  "skills.view.bento": "Bento",
+  "skills.view.grid": "Grid",
+  "skills.sortAria": "Sort skills",
+  "skills.sort.mix": "Mix",
+  "skills.sort.level": "Level",
+  "skills.sort.az": "A–Z",
+  "skills.sort.category": "Category",
   "skills.showing": "Showing",
   "skills.skill": "skill",
   "skills.skills": "skills",
   "skills.empty": "No skills match “{query}”. Try a different term.",
   "skills.proficiency": "Proficiency",
-
   "category.all": "All",
   "category.languages": "Languages",
   "category.frontend": "Frontend & UI",
@@ -45,7 +50,6 @@
   "category.data": "Data & Storage",
   "category.tools": "Tools",
   "category.design": "Design & Collaboration",
-
   "projects.eyebrow": "Side Quests",
   "projects.title": "Personal projects",
   "projects.intro": "A gallery of self-driven products spanning cross-platform mobile, real-time collaboration and AI. Open any card for a deep-dive.",
@@ -57,10 +61,8 @@
   "projects.privacy": "Privacy",
   "projects.privacyPolicy": "Privacy Policy",
   "projects.gdpr": "GDPR",
-
   "footer.role": "Senior Software Engineer · Düsseldorf · Built with Angular, Tailwind & PrimeNG.",
   "footer.rights": "All rights reserved.",
-
   "legal.backToProjects": "Back to projects",
   "legal.backToPortfolio": "Back to portfolio",
   "legal.privacy": "Privacy",
@@ -68,7 +70,6 @@
   "legal.unavailableTitle": "Document unavailable",
   "legal.unavailablePrivacy": "No privacy policy is published for this project.",
   "legal.unavailableGdpr": "No GDPR document is published for this project.",
-
   "notFound.title": "This page took a wrong turn.",
   "notFound.subtitle": "The page you're looking for doesn't exist or has moved.",
   "notFound.home": "Back home"

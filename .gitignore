@@ -30,3 +30,6 @@ npm-debug.log*
 # Source CV documents — contain personal data (phone, address); keep out of the repo
 /Lebenslauf_DE.pdf
 /*.docx
+
+# Profiler exports — internal data, keep out of the repo
+/profiler-*.zip

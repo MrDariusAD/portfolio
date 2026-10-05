@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { RippleDirective } from '../../directives/ripple.directive';
 import { SocialLink } from '../../core/models';
 import { TranslationService } from '../../core/translation.service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [NgFor],
+  imports: [RippleDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.component.html'
 })

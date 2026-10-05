@@ -1,74 +1,82 @@
-<section id="about" class="relative overflow-hidden scroll-mt-20" *ngIf="profile() as p">
-  <!-- Ambient brand glow — slow idle drift -->
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-    <div
-      class="animate-drift-a absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-gs-crimson-500/20 blur-3xl"
-    ></div>
-    <div
-      class="animate-drift-b absolute top-10 right-1/4 h-64 w-64 rounded-full bg-gs-gold-400/20 blur-3xl"
-    ></div>
-    <div
-      class="animate-float absolute bottom-0 left-1/2 h-56 w-56 rounded-full bg-gs-crimson-700/10 blur-3xl"
-    ></div>
-  </div>
+@if (profile(); as p) {
+  <section id="about" class="relative scroll-mt-20 overflow-hidden">
+    <!-- Ambient brand light — static: decoration should not loop -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div
+        class="hero-blob -top-20 left-[18%] h-80 w-80"
+        style="background: color-mix(in srgb, var(--int-crimson) 22%, transparent)"
+      ></div>
+      <div
+        class="hero-blob right-[14%] top-5 h-[270px] w-[270px]"
+        style="background: color-mix(in srgb, var(--int-gold) 22%, transparent)"
+      ></div>
+    </div>
 
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-    <div class="animate-fade-in-up">
-      @if(p.showOpenForWork){
-      <span class="pill border border-gs-gold-400/50 bg-gs-gold-400/10 text-gs-gold-600 dark:text-gs-gold-300">
-        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-gs-gold-500"></span>
-        {{ i18n.t('hero.badge') }}
-      </span>
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24">
+      @if (p.showOpenForWork) {
+        <span
+          class="rise pill mb-5 border text-[13px]"
+          style="--i: 0; border-color: color-mix(in srgb, var(--int-gold) 50%, transparent); background: color-mix(in srgb, var(--int-gold) 10%, transparent); color: var(--int-tertiary)"
+        >
+          <span class="h-1.5 w-1.5 rounded-full" style="background: var(--int-gold)"></span>
+          {{ i18n.t('hero.badge') }}
+        </span>
       }
 
-      <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">
-        <span class="mr-1 inline-block origin-[70%_80%] animate-wiggle">👋</span>
-        {{ i18n.t('hero.greeting') }}
-        <span class="text-brand-gradient">{{ firstName(p.name) }}</span>.
+      <h1 class="hero-title rise" style="--i: 1">
+        {{ i18n.t('hero.greeting') }} <span class="text-brand-gradient">{{ firstName(p.name) }}</span>.
       </h1>
-
-      <p class="mt-3 text-xl font-semibold text-content-muted sm:text-2xl">
-        {{ p.title }}
+      <p class="hero-role rise" style="--i: 2">{{ p.title }}</p>
+      <p class="rise mt-3 flex items-center gap-1.5 text-[15px]" style="--i: 3; color: var(--int-on-surface-variant)">
+        <app-icon name="location_on" class="text-lg" style="color: var(--int-primary)" />{{ p.location }}
       </p>
+      <p class="hero-bio rise" style="--i: 4">{{ p.introduction }}</p>
 
-      <p class="mt-2 flex items-center gap-2 text-sm text-content-muted">
-        <i class="pi pi-map-marker animate-pulse-soft text-gs-crimson-600"></i>{{ p.location }}
-      </p>
-
-      <p class="mt-6 max-w-3xl text-base leading-relaxed text-content-muted sm:text-lg">
-        {{ p.introduction }}
-      </p>
-
-      <!-- Social channels — hard redirects to digital touchpoints -->
-      <div class="mt-8 flex flex-wrap items-center gap-3">
-        <a *ngFor="let s of p.socials" [href]="s.url" target="_blank" rel="noopener noreferrer"
-          [class]="ctaClass(s.id)">
-          <i [class]="s.icon" class="text-lg"></i>
-          <span>{{ s.label }}</span>
-        </a>
+      <!-- Social channels — one filled action, the rest outlined -->
+      <div class="rise mt-8 flex flex-wrap gap-2.5" style="--i: 5">
+        @for (s of p.socials; track s.id; let first = $first) {
+          <a
+            [href]="s.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn"
+            [class.btn-filled]="first"
+            [class.btn-outlined]="!first"
+            appRipple
+          >
+            <i [class]="s.icon"></i>{{ s.label }}
+          </a>
+        }
       </div>
 
       <!-- Credentials -->
-      <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      <div class="rise mt-11 grid max-w-3xl gap-7 sm:grid-cols-2" style="--i: 6">
         <div>
           <h2 class="section-eyebrow">{{ i18n.t('hero.certifications') }}</h2>
-          <ul class="mt-3 space-y-2">
-            <li *ngFor="let c of p.certifications" class="flex items-start gap-2 text-sm text-content-muted">
-              <i class="pi pi-verified mt-0.5 text-gs-crimson-600"></i>{{ c }}
-            </li>
+          <ul class="mt-3 grid gap-2">
+            @for (c of p.certifications; track c) {
+              <li class="flex items-start gap-2" style="color: var(--int-on-surface-variant)">
+                <app-icon name="verified" class="mt-0.5 text-lg" style="color: var(--int-primary)" />
+                <span>{{ c }}</span>
+              </li>
+            }
           </ul>
         </div>
         <div>
           <h2 class="section-eyebrow">{{ i18n.t('hero.languages') }}</h2>
-          <ul class="mt-3 space-y-2">
-            <li *ngFor="let l of p.languages" class="flex items-center gap-2 text-sm text-content-muted">
-              <i class="pi pi-globe text-gs-gold-500"></i>
-              <span class="font-medium text-content">{{ l.language }}</span>
-              <span class="text-content-muted">— {{ l.level }}</span>
-            </li>
+          <ul class="mt-3 grid gap-2">
+            @for (l of p.languages; track l.language) {
+              <li class="flex items-start gap-2" style="color: var(--int-on-surface-variant)">
+                <app-icon name="translate" class="mt-0.5 text-lg" style="color: var(--int-primary)" />
+                <span
+                  ><b class="font-semibold" style="color: var(--int-on-surface)">{{ l.language }}</b> —
+                  {{ l.level }}</span
+                >
+              </li>
+            }
           </ul>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}

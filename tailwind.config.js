@@ -8,37 +8,36 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // ── Galatasaray Istanbul brand palette ─────────────────────────
+        // ── INT Design System brand ramps (Galatasaray crimson + gold) ──
+        // Crimson follows the DS tonal palette (--int-crimson-*), 700 = ink fill #7C0320.
         gs: {
-          // Primary / Crimson accent
           crimson: {
-            DEFAULT: '#a80633',
-            50: '#fdf2f5',
-            100: '#fbe3ea',
-            200: '#f6c7d6',
-            300: '#ee9bb4',
-            400: '#e2638b',
-            500: '#d13a68',
-            600: '#bb2151',
-            700: '#a80633',
-            800: '#85113a',
-            900: '#711336',
-            950: '#3f0419'
+            DEFAULT: '#a32638',
+            50: '#ffedec',
+            100: '#ffdada',
+            200: '#ffb3b5',
+            300: '#ff888f',
+            400: '#f0606e',
+            500: '#ce4756',
+            600: '#ad2e40',
+            700: '#7c0320',
+            800: '#680019',
+            900: '#40000c',
+            950: '#2a0008'
           },
-          // Secondary / Gold accent
           gold: {
-            DEFAULT: '#fbbb20',
-            50: '#fffaeb',
-            100: '#fef0c7',
-            200: '#fde08a',
-            300: '#fcca4d',
-            400: '#fbbb20',
-            500: '#f59b0b',
-            600: '#d97506',
-            700: '#b45309',
-            800: '#92400e',
-            900: '#78350f',
-            950: '#451f05'
+            DEFAULT: '#fcb614',
+            50: '#fff8e6',
+            100: '#ffedc2',
+            200: '#ffdf8a',
+            300: '#fdcb4d',
+            400: '#fcb614',
+            500: '#e89e00',
+            600: '#b36200',
+            700: '#8f4d00',
+            800: '#6d3a00',
+            900: '#4d2700',
+            950: '#2e1500'
           }
         },
         // ── Semantic surface tokens (resolve via CSS variables) ─────────
@@ -50,74 +49,27 @@ module.exports = {
         hairline: 'rgb(var(--hairline) / <alpha-value>)'
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif']
+        sans: ['Inter Variable', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['JetBrains Mono Variable', 'JetBrains Mono', 'ui-monospace', 'SF Mono', 'Menlo', 'monospace']
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(168, 6, 51, 0.15), 0 12px 32px -12px rgba(168, 6, 51, 0.45)',
-        gold: '0 0 0 1px rgba(251, 187, 32, 0.25), 0 8px 24px -10px rgba(251, 187, 32, 0.5)'
+        glow: '0 0 22px -2px rgba(163, 38, 56, 0.2), 0 0 33px -6px rgba(252, 182, 20, 0.1)',
+        gold: '0 0 0 2px #fcb614, 0 0 12px rgba(252, 182, 20, 0.35)'
       },
       transitionTimingFunction: {
-        'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)'
+        // IntMotion
+        standard: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        settle: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        travel: 'cubic-bezier(0.5, 0, 0.2, 1)'
       },
       keyframes: {
         'fade-in-up': {
-          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
-        },
-        'pulse-node': {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(168, 6, 51, 0.5)' },
-          '50%': { boxShadow: '0 0 0 10px rgba(168, 6, 51, 0)' }
-        },
-        // ── Idle / ambient loops (play continuously, no scroll needed) ──────
-        'gradient-pan': {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' }
-        },
-        'drift-a': {
-          '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: '0.8' },
-          '50%': { transform: 'translate(60px, -45px) scale(1.28)', opacity: '1' }
-        },
-        'drift-b': {
-          '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: '0.75' },
-          '50%': { transform: 'translate(-66px, 42px) scale(1.32)', opacity: '1' }
-        },
-        float: {
-          '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: '0.7' },
-          '50%': { transform: 'translate(34px, -16px) scale(1.2)', opacity: '1' }
-        },
-        'pulse-soft': {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.55' }
-        },
-        'spin-slow': {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' }
-        },
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-6deg)' },
-          '50%': { transform: 'rotate(6deg)' }
-        },
-        'bob-x': {
-          '0%, 100%': { transform: 'translateX(0)' },
-          '50%': { transform: 'translateX(4px)' }
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-150% 0' },
-          '100%': { backgroundPosition: '250% 0' }
         }
       },
       animation: {
-        'fade-in-up': 'fade-in-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) both',
-        'pulse-node': 'pulse-node 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'gradient-pan': 'gradient-pan 7s ease-in-out infinite',
-        'drift-a': 'drift-a 13s ease-in-out infinite',
-        'drift-b': 'drift-b 17s ease-in-out infinite',
-        float: 'float 9s ease-in-out infinite',
-        'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
-        'spin-slow': 'spin-slow 22s linear infinite',
-        wiggle: 'wiggle 2.5s ease-in-out infinite',
-        'bob-x': 'bob-x 1.6s ease-in-out infinite',
-        shimmer: 'shimmer 2.8s ease-in-out infinite'
+        'fade-in-up': 'fade-in-up 420ms cubic-bezier(0.16, 1, 0.3, 1) both'
       }
     }
   },

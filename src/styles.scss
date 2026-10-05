@@ -1,41 +1,123 @@
 /* ============================================================================
-   Global stylesheet — Tailwind layers + Galatasaray semantic theme tokens
+   Global stylesheet — INT Design System (Material 3 Expressive, Galatasaray
+   crimson + gold) on Tailwind layers. Tokens mirror the INT Design System
+   project in Claude Design (tokens/colors.css · motion.css · shape.css …).
    ========================================================================== */
 @import 'primeicons/primeicons.css';
+@import '@fontsource-variable/inter/index.css';
+@import '@fontsource-variable/jetbrains-mono/index.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ----------------------------------------------------------------------------
-   Semantic colour tokens as CSS variables (channels, space-separated RGB)
-   so Tailwind's `<alpha-value>` and PrimeNG can both consume them.
-   Light theme is the default; `.dark` on <html> swaps the canvas.
+   Tokens
    -------------------------------------------------------------------------- */
 @layer base {
   :root {
-    --canvas: 248 250 252; /* #f8fafc — Slate 50  */
-    --surface: 255 255 255; /* #ffffff           */
-    --surface-muted: 241 245 249; /* #f1f5f9     */
-    --content: 15 23 42; /* #0f172a — Slate 900  */
-    --content-muted: 71 85 105; /* #475569       */
-    --hairline: 226 232 240; /* #e2e8f0          */
+    /* IntMotion — five curves and a duration scale */
+    --int-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --int-ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+    --int-ease-travel: cubic-bezier(0.5, 0, 0.2, 1);
+    --int-dur-instant: 90ms;
+    --int-dur-fast: 150ms;
+    --int-dur-normal: 250ms;
+    --int-dur-release: 240ms;
+    --int-dur-entrance: 420ms;
+    --int-dur-stagger: 40ms;
 
-    --gs-crimson: 168 6 51; /* #a80633 */
-    --gs-gold: 251 187 32; /* #fbbb20 */
+    --int-font: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --int-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    /* Colour roles — light */
+    --int-primary: #7c0320;
+    --int-on-primary: #ffffff;
+    --int-primary-container: #9d2235;
+    --int-on-primary-container: #ffe0e0;
+    --int-secondary-container: #ffdad9;
+    --int-on-secondary-container: #3b0812;
+    --int-tertiary: #8f4d00;
+    --int-bg: #fff8f7;
+    --int-on-surface: #251819;
+    --int-on-surface-variant: #584142;
+    --int-surface-bright: #ffffff;
+    --int-sc-lowest: #ffffff;
+    --int-sc-low: #fff0f0;
+    --int-sc-high: #f9e3e3;
+    --int-sc-highest: #f5dddd;
+    --int-outline: #806566;
+    --int-outline-variant: #9a7071;
+    --int-hair: color-mix(in srgb, var(--int-outline-variant) 38%, transparent);
+    --int-ink-fill: #7c0320;
+    --int-ink-on-fill: #ffffff;
+    --int-ink-gloss: rgba(255, 255, 255, 0.22);
+    --int-ink-shadow: rgba(0, 0, 0, 0.28);
+    --int-xp-ink: #8f4d00;
+    --int-glass: rgba(255, 248, 247, 0.72);
+    --int-scrim: rgba(0, 0, 0, 0.36);
+
+    /* Brand primitives (same in both themes) */
+    --int-crimson: #a32638;
+    --int-gold: #fcb614;
+    --int-orange: #ff8e00;
+    --int-gold-ink: #251819;
+
+    /* Elevation */
+    --int-elev-1: 0 1px 2px rgba(64, 0, 12, 0.1), 0 1px 3px 1px rgba(64, 0, 12, 0.06);
+    --int-elev-2: 0 1px 2px rgba(64, 0, 12, 0.12), 0 2px 6px 2px rgba(64, 0, 12, 0.08);
+    --int-elev-3: 0 4px 8px 3px rgba(64, 0, 12, 0.08), 0 1px 3px rgba(64, 0, 12, 0.14);
+    --int-elev-4: 0 6px 10px 4px rgba(64, 0, 12, 0.09), 0 2px 3px rgba(64, 0, 12, 0.14);
+    --int-gold-ring: 0 0 0 2px #fcb614, 0 0 12px rgba(252, 182, 20, 0.35);
+
+    /* Tailwind semantic channels (space-separated RGB) — used by legal / 404 */
+    --canvas: 255 248 247;
+    --surface: 255 240 240;
+    --surface-muted: 249 227 227;
+    --content: 37 24 25;
+    --content-muted: 88 65 66;
+    --hairline: 230 207 207;
+    --gs-crimson: 163 38 56;
+    --gs-gold: 252 182 20;
 
     color-scheme: light;
   }
 
   html.dark {
-    /* Dark theme is a warm charcoal with a subtle crimson hint — leans toward
-       the Galatasaray brand without the heavy maroon; crimson/gold stay as accents. */
-    --canvas: 24 19 23; /* #181317 — near-black, faint warm  */
-    --surface: 37 29 34; /* #251d22 — warm charcoal panel    */
-    --surface-muted: 51 40 49; /* #332831 — raised surface    */
-    --content: 246 241 243; /* #f6f1f3 — warm near-white      */
-    --content-muted: 179 166 172; /* #b3a6ac — warm muted     */
-    --hairline: 63 47 57; /* #3f2f39 — subtle warm border     */
+    --int-primary: #ffb3b5;
+    --int-on-primary: #5c1018;
+    --int-primary-container: #7c0320;
+    --int-on-primary-container: #ffdad9;
+    --int-secondary-container: #8e4b4f;
+    --int-on-secondary-container: #ffdad9;
+    --int-tertiary: #ffb77b;
+    --int-bg: #1c1011;
+    --int-on-surface: #f5dddd;
+    --int-on-surface-variant: #dfbfbf;
+    --int-surface-bright: #433435;
+    --int-sc-lowest: #160b0c;
+    --int-sc-low: #251819;
+    --int-sc-high: #342727;
+    --int-sc-highest: #403131;
+    --int-outline: #a78a8a;
+    --int-outline-variant: #9c7c7d;
+    --int-ink-on-fill: #ffdad9;
+    --int-ink-gloss: rgba(255, 255, 255, 0.45);
+    --int-ink-shadow: rgba(0, 0, 0, 0.4);
+    --int-xp-ink: #fcb614;
+    --int-glass: rgba(28, 16, 17, 0.72);
+    --int-scrim: rgba(0, 0, 0, 0.55);
+    --int-elev-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --int-elev-2: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+    --int-elev-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --int-elev-4: 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.3);
+
+    --canvas: 28 16 17;
+    --surface: 37 24 25;
+    --surface-muted: 52 39 39;
+    --content: 245 221 221;
+    --content-muted: 223 191 191;
+    --hairline: 72 54 55;
 
     color-scheme: dark;
   }
@@ -46,17 +128,18 @@
   }
 
   body {
-    @apply bg-canvas text-content font-sans;
-    /* Smooth theme transition across the whole document. */
-    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--int-bg);
+    color: var(--int-on-surface);
+    font-family: var(--int-font);
+    -webkit-font-smoothing: antialiased;
+    /* Theme switch: colours only, never transforms */
+    transition: background-color var(--int-dur-normal) var(--int-ease-standard),
+      color var(--int-dur-normal) var(--int-ease-standard);
   }
 
-  /* Give every surface-aware element a consistent themed transition. */
-  .theme-transition,
-  .theme-transition * {
-    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out,
-      color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  :focus-visible {
+    outline: 2px solid var(--int-primary);
+    outline-offset: 2px;
   }
 
   ::selection {
@@ -66,129 +149,1136 @@
 }
 
 /* ----------------------------------------------------------------------------
-   Reusable component primitives
+   Primitives
    -------------------------------------------------------------------------- */
 @layer components {
+  .int-icon {
+    display: inline-flex;
+    width: 1em;
+    height: 1em;
+    flex: none;
+    line-height: 1;
+  }
+  .int-icon > svg {
+    width: 100%;
+    height: 100%;
+  }
+  .mono {
+    font-family: var(--int-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Legacy primitives still used by the legal + 404 pages */
   .glass {
-    @apply border-b border-hairline/70 bg-surface/70 backdrop-blur-md;
+    background: var(--int-glass);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--int-hair);
   }
-
   .card {
-    @apply rounded-2xl border border-hairline bg-surface shadow-sm;
+    @apply rounded-2xl border border-hairline bg-surface;
+    box-shadow: var(--int-elev-1);
   }
-
   .pill {
     @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
   }
-
-  .section-title {
-    @apply text-2xl font-extrabold tracking-tight sm:text-3xl;
-  }
-
-  .section-eyebrow {
-    @apply text-sm font-semibold uppercase tracking-[0.2em] text-gs-gold-600 dark:text-gs-gold-400;
-  }
-
-  /* Crimson→gold gradient text (name / key headings) with a slow idle shimmer.
-     Colours wrap (crimson → gold → crimson) so the panning loop is seamless. */
   .text-brand-gradient {
-    @apply animate-gradient-pan bg-gradient-to-r from-gs-crimson-700 via-gs-gold-500 to-gs-crimson-700 bg-clip-text text-transparent;
-    background-size: 200% auto;
+    background: linear-gradient(120deg, var(--int-crimson), var(--int-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  /* ── Lightweight prose styles for ngx-markdown output ──────────────────── */
-  .prose-portfolio {
-    @apply text-content-muted;
+  /* Section heads */
+  .section-eyebrow {
+    font: 500 12px/16px var(--int-font);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--int-primary);
+    margin: 0;
+  }
+  .section-title {
+    font: 700 32px/40px var(--int-font);
+    letter-spacing: -0.6px;
+    margin: 8px 0 0;
+    text-wrap: balance;
+  }
+  @media (max-width: 640px) {
+    .section-title {
+      font-size: 26px;
+      line-height: 32px;
+    }
+  }
+  .section-intro {
+    font: 400 16px/24px var(--int-font);
+    color: var(--int-on-surface-variant);
+    max-width: 62ch;
+    margin: 12px 0 0;
+  }
 
-    h1 {
-      @apply mb-4 mt-0 text-2xl font-extrabold text-content;
+  /* ── Buttons · INT ink-tier physics ──────────────────────────────────────
+     rest: 1px gloss edge + soft drop shadow · hover: +10% white, deeper shadow
+     press: −16% black, the shadow turns inset and the button sinks.
+     Press lands in 90ms, release eases back over 240ms. */
+  .btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font: 600 15px/22px var(--int-font);
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color var(--int-dur-release) var(--int-ease-standard),
+      box-shadow var(--int-dur-release) var(--int-ease-standard),
+      color var(--int-dur-release) var(--int-ease-standard),
+      text-decoration-color var(--int-dur-fast) var(--int-ease-standard);
+  }
+  .btn .int-icon,
+  .btn .pi {
+    font-size: 18px;
+  }
+  .btn:active {
+    transition-duration: var(--int-dur-instant);
+  }
+  .btn-ink,
+  .btn-filled {
+    --fill: var(--int-ink-fill);
+    --on: var(--int-ink-on-fill);
+    background: var(--fill);
+    color: var(--on);
+    box-shadow: inset 0 1px 0 var(--int-ink-gloss), 0 1px 2px var(--int-ink-shadow);
+  }
+  .btn-filled {
+    --fill: var(--int-primary);
+    --on: var(--int-on-primary);
+  }
+  .btn-ink:active,
+  .btn-filled:active {
+    background: color-mix(in srgb, #000 16%, var(--fill));
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28);
+  }
+  .btn-tonal {
+    background: var(--int-secondary-container);
+    color: var(--int-on-secondary-container);
+  }
+  .btn-tonal:active {
+    background: color-mix(in srgb, var(--int-on-secondary-container) 13%, var(--int-secondary-container));
+  }
+  .btn-outlined {
+    border-color: var(--int-outline);
+    color: var(--int-primary);
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--int-ink-shadow) 40%, transparent);
+  }
+  .btn-outlined:active {
+    background: color-mix(in srgb, var(--int-primary) 13%, transparent);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.16);
+  }
+  .btn-text {
+    color: var(--int-primary);
+    padding: 0 12px;
+  }
+  .btn-text:active {
+    background: color-mix(in srgb, var(--int-primary) 8%, transparent);
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 2px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover {
+      transition-duration: var(--int-dur-fast);
     }
-    h2 {
-      @apply mb-2 mt-6 text-lg font-bold text-content;
+    .btn-ink:hover,
+    .btn-filled:hover {
+      background: color-mix(in srgb, #fff 10%, var(--fill));
+      box-shadow: inset 0 1px 0 var(--int-ink-gloss), 0 3px 8px var(--int-ink-shadow);
     }
-    h3 {
-      @apply mb-2 mt-5 text-base font-bold text-content;
+    .btn-tonal:hover {
+      background: color-mix(in srgb, var(--int-on-secondary-container) 7%, var(--int-secondary-container));
     }
-    h4 {
-      @apply mb-1 mt-4 text-sm font-bold uppercase tracking-wide text-content;
+    .btn-outlined:hover {
+      background: color-mix(in srgb, var(--int-primary) 7%, transparent);
+      box-shadow: 0 3px 8px color-mix(in srgb, var(--int-ink-shadow) 45%, transparent);
     }
-    p {
-      @apply my-3 leading-relaxed;
+    .btn-text:hover {
+      text-decoration-color: currentColor;
     }
-    a {
-      @apply font-medium text-gs-crimson-700 underline underline-offset-2 dark:text-gs-gold-400;
+    .btn-ink:active,
+    .btn-filled:active {
+      background: color-mix(in srgb, #000 16%, var(--fill));
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28);
+      transition-duration: var(--int-dur-instant);
     }
-    strong {
-      @apply font-semibold text-content;
+  }
+
+  /* Ink ripple (DS press feedback) — spawned and animated by the appRipple directive */
+  .int-ripple {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: currentColor;
+    opacity: 0.18;
+    transform: scale(0.2);
+  }
+
+  .icon-btn {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    color: var(--int-on-surface-variant);
+    font-size: 20px;
+    transition: background-color var(--int-dur-fast) var(--int-ease-standard),
+      color var(--int-dur-fast) var(--int-ease-standard);
+  }
+  .icon-btn:active {
+    background: color-mix(in srgb, var(--int-on-surface) 13%, transparent);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .icon-btn:hover {
+      background: color-mix(in srgb, var(--int-on-surface) 7%, transparent);
+      color: var(--int-on-surface);
     }
-    em {
-      @apply text-content-muted;
-    }
-    ul {
-      @apply my-3 list-disc space-y-1.5 pl-5;
-    }
-    ol {
-      @apply my-3 list-decimal space-y-1.5 pl-5;
-    }
-    code {
-      @apply rounded bg-surface-muted px-1.5 py-0.5 font-mono text-sm text-gs-crimson-700 dark:text-gs-gold-300;
-    }
-    hr {
-      @apply my-6 border-hairline;
-    }
-    blockquote {
-      @apply my-4 border-l-4 border-gs-gold-400 pl-4 italic;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--int-hair);
+    background: var(--int-sc-lowest);
+    color: var(--int-on-surface-variant);
+    font: 500 13px/18px var(--int-font);
+  }
+  .now-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 7px;
+    border-radius: 999px;
+    background: var(--int-gold);
+    color: var(--int-gold-ink);
+    font: 700 10px/1 var(--int-font);
+    letter-spacing: 0.8px;
+  }
+
+  /* ── Scroll reveal (appReveal) — once per element, from a resting offset ── */
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  .reveal-in {
+    transition: opacity var(--int-dur-entrance) var(--int-ease-settle),
+      transform var(--int-dur-entrance) var(--int-ease-settle);
+    transition-delay: calc(var(--i, 0) * var(--int-dur-stagger));
+  }
+
+  /* Hero entrance (once per visit) */
+  .rise {
+    animation: int-rise var(--int-dur-entrance) var(--int-ease-settle) both;
+    animation-delay: calc(var(--i, 0) * var(--int-dur-stagger));
+  }
+  @keyframes int-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
     }
   }
 }
 
 /* ----------------------------------------------------------------------------
-   Custom scrollbar (subtle, brand-aware)
+   Header
    -------------------------------------------------------------------------- */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(var(--gs-crimson) / 0.55) transparent;
+/* Sticky: the component host is the sticky box (its parent spans the whole page). */
+app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: block;
 }
-*::-webkit-scrollbar {
+.site-header {
+  background: var(--int-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--int-hair);
+  transition: box-shadow var(--int-dur-normal) var(--int-ease-standard);
+}
+.site-header.is-scrolled {
+  box-shadow: var(--int-elev-2);
+}
+.brand-tile {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  color: #fff;
+  font: 800 13px/1 var(--int-font);
+  letter-spacing: -0.2px;
+  background: linear-gradient(135deg, var(--int-crimson), var(--int-orange));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), var(--int-elev-1);
+}
+
+/* Section nav — the active pill is a clipped copy of the row, so the colour
+   change travels with the pill instead of cross-fading two states. */
+.nav-track {
+  position: relative;
+}
+.nav-row {
+  display: flex;
+  gap: 2px;
+}
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font: 500 14px/20px var(--int-font);
+  color: var(--int-on-surface-variant);
+  white-space: nowrap;
+  transition: color var(--int-dur-fast) var(--int-ease-standard);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-row:not(.nav-active) .nav-link:hover {
+    color: var(--int-primary);
+  }
+}
+.nav-active {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: inset(0 100% 100% 0 round 999px);
+  transition: clip-path 260ms var(--int-ease-travel);
+}
+.nav-active .nav-link {
+  background: var(--int-secondary-container);
+  color: var(--int-on-secondary-container);
+  font-weight: 600;
+}
+.nav-row:not(.nav-active) .nav-link {
+  font-weight: 600; /* same metrics as the active copy so the clip lines up */
+}
+
+/* EN | DE — equal halves, the pill slides by its own width */
+.lang-seg {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--int-hair);
+}
+.lang-seg button {
+  position: relative;
+  z-index: 1;
+  width: 34px;
+  height: 30px;
+  border-radius: 999px;
+  font: 700 12px/1 var(--int-font);
+  letter-spacing: 0.4px;
+  color: var(--int-on-surface-variant);
+  transition: color var(--int-dur-fast) var(--int-ease-standard);
+}
+.lang-seg button[aria-pressed='true'] {
+  color: var(--int-on-secondary-container);
+}
+.lang-seg .lang-pill {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 34px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--int-secondary-container);
+  transition: transform var(--int-dur-normal) var(--int-ease-travel);
+}
+.lang-seg.is-de .lang-pill {
+  transform: translateX(100%);
+}
+
+/* Theme toggle — the glyphs swap with a quarter turn */
+.theme-glyph {
+  position: absolute;
+  font-size: 20px;
+  transition: transform var(--int-dur-normal) var(--int-ease-settle),
+    opacity var(--int-dur-fast) var(--int-ease-standard);
+}
+.theme-glyph.is-off {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+/* ----------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+}
+.hero-title {
+  margin: 0;
+  font: 700 52px/60px var(--int-font);
+  letter-spacing: -1px;
+  text-wrap: balance;
+}
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 38px;
+    line-height: 44px;
+  }
+}
+.hero-role {
+  margin: 10px 0 0;
+  font: 600 22px/28px var(--int-font);
+  letter-spacing: -0.2px;
+  color: var(--int-on-surface-variant);
+}
+.hero-bio {
+  margin: 24px 0 0;
+  max-width: 68ch;
+  font: 400 16px/26px var(--int-font);
+  color: var(--int-on-surface-variant);
+}
+
+/* ----------------------------------------------------------------------------
+   Timeline
+   -------------------------------------------------------------------------- */
+.tl {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 14px;
+  border-left: 2px solid var(--int-hair);
+  display: grid;
+  gap: 4px;
+}
+.tl-row {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+.tl-btn {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  text-align: left;
+  transition: background-color var(--int-dur-fast) var(--int-ease-standard);
+}
+@media (hover: hover) and (pointer: fine) {
+  .tl-btn:hover {
+    background: color-mix(in srgb, var(--int-on-surface) 5%, transparent);
+  }
+}
+.tl-dot {
+  position: absolute;
+  left: -22px;
+  top: 15px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--int-bg);
+  border: 2px solid var(--int-outline-variant);
+  transition: transform 200ms var(--int-ease-settle),
+    background-color var(--int-dur-fast) var(--int-ease-standard),
+    border-color var(--int-dur-fast) var(--int-ease-standard);
+}
+.tl-period {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 500 12px/16px var(--int-mono);
+  letter-spacing: 0.2px;
+  color: var(--int-on-surface-variant);
+}
+.tl-role {
+  font: 700 15px/22px var(--int-font);
+  transition: color var(--int-dur-fast) var(--int-ease-standard);
+}
+.tl-org {
+  font: 400 13px/18px var(--int-font);
+  color: var(--int-on-surface-variant);
+}
+.tl-btn.is-selected {
+  background: color-mix(in srgb, var(--int-primary) 8%, transparent);
+}
+.tl-btn.is-selected .tl-role {
+  color: var(--int-primary);
+}
+.tl-btn.is-selected .tl-dot {
+  background: var(--int-primary);
+  border-color: var(--int-primary);
+  transform: scale(1.15);
+}
+.tl-chev {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-top: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--int-hair);
+  color: var(--int-on-surface-variant);
+  font-size: 20px;
+  flex: none;
+}
+.tl-chev .int-icon {
+  transition: transform var(--int-dur-normal) var(--int-ease-settle);
+}
+.tl-chev[aria-expanded='true'] .int-icon {
+  transform: rotate(180deg);
+}
+/* Children collapse via grid rows 0fr → 1fr (no height measuring) */
+.tl-kids {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--int-dur-normal) var(--int-ease-standard);
+}
+.tl-kids > div {
+  overflow: hidden;
+  min-height: 0;
+}
+.tl-kids.is-open {
+  grid-template-rows: 1fr;
+}
+.tl-kids ol {
+  list-style: none;
+  margin: 4px 0 8px 14px;
+  padding: 0 0 0 12px;
+  border-left: 2px solid var(--int-hair);
+  display: grid;
+  gap: 2px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 200ms var(--int-ease-standard), transform var(--int-dur-normal) var(--int-ease-settle);
+}
+.tl-kids.is-open ol {
+  opacity: 1;
+  transform: none;
+}
+.tl-kids .tl-btn {
+  padding: 8px 10px;
+}
+.tl-kids .tl-dot {
+  left: -20px;
+  top: 13px;
   width: 10px;
   height: 10px;
 }
-*::-webkit-scrollbar-thumb {
-  background-color: rgb(var(--gs-crimson) / 0.5);
-  border-radius: 9999px;
-  border: 2px solid transparent;
-  background-clip: content-box;
+.tl-kids .tl-chev {
+  width: 32px;
+  height: 32px;
+  margin-top: 4px;
+  border-radius: 10px;
+  font-size: 18px;
 }
-*::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(var(--gs-crimson) / 0.8);
+.tl-kids .tl-role {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.tl-detail {
+  padding: 28px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--int-primary-container) 30%, transparent),
+    var(--int-sc-low)
+  );
+  border: 1px solid color-mix(in srgb, var(--int-primary) 16%, transparent);
+  box-shadow: var(--int-elev-3);
+  transition: opacity 200ms var(--int-ease-settle), transform 220ms var(--int-ease-settle),
+    filter 200ms var(--int-ease-settle);
+}
+/* Swap: old content blurs out fast, new content settles in — no overlap */
+.tl-detail.is-out {
+  opacity: 0;
+  transform: translateY(2px);
+  filter: blur(2px);
+  transition-duration: 110ms;
+}
+.tl-detail.is-in-start {
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(2px);
+  transition: none;
+}
+.tl-detail h3 {
+  margin: 10px 0 0;
+  font: 700 24px/32px var(--int-font);
+  letter-spacing: -0.4px;
+  text-wrap: balance;
+}
+.tl-detail h4 {
+  margin: 24px 0 10px;
+  font: 500 12px/16px var(--int-font);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--int-on-surface-variant);
 }
 
 /* ----------------------------------------------------------------------------
-   PrimeNG bridge — map PrimeNG dialog / overlay surfaces onto our tokens.
-   PrimeNG 18 (styled mode) emits CSS variables we can re-point here.
+   Skills — controls
    -------------------------------------------------------------------------- */
-:root {
-  --p-dialog-background: rgb(var(--surface));
-  --p-dialog-color: rgb(var(--content));
-  --p-dialog-border-color: rgb(var(--hairline));
-  --p-overlay-modal-background: rgb(var(--surface));
-  --p-content-background: rgb(var(--surface));
+.int-field {
+  position: relative;
+}
+.int-field .int-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--int-on-surface-variant);
+}
+.int-field input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px 0 44px;
+  border-radius: 12px;
+  border: 1px solid var(--int-hair);
+  background: var(--int-sc-low);
+  color: var(--int-on-surface);
+  font: 400 15px/22px var(--int-font);
+  transition: border-color var(--int-dur-fast) var(--int-ease-standard),
+    box-shadow var(--int-dur-fast) var(--int-ease-standard);
+}
+.int-field input::placeholder {
+  color: var(--int-on-surface-variant);
+  opacity: 0.8;
+}
+.int-field input:focus {
+  outline: none;
+  border-color: var(--int-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--int-primary) 18%, transparent);
 }
 
+.seg {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--int-hair);
+  background: var(--int-sc-low);
+}
+.seg button {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font: 600 13px/1 var(--int-font);
+  color: var(--int-on-surface-variant);
+  white-space: nowrap;
+  transition: background-color var(--int-dur-fast) var(--int-ease-standard),
+    color var(--int-dur-fast) var(--int-ease-standard);
+}
+.seg button .int-icon {
+  font-size: 18px;
+}
+.seg button[aria-pressed='true'] {
+  background: var(--int-secondary-container);
+  color: var(--int-on-secondary-container);
+}
+
+/* Category chips: the active state is a clipped copy that travels */
+.cat-track {
+  position: relative;
+}
+.cat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cat {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--int-hair);
+  font: 600 14px/20px var(--int-font);
+  color: var(--int-on-surface-variant);
+  transition: color var(--int-dur-fast) var(--int-ease-standard),
+    border-color var(--int-dur-fast) var(--int-ease-standard);
+}
+.cat .n {
+  font: 500 12px/1 var(--int-mono);
+  opacity: 0.75;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cat-row:not(.cat-active) .cat:hover {
+    color: var(--int-primary);
+    border-color: var(--int-outline);
+  }
+}
+.cat-active {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: inset(0 100% 100% 0 round 999px);
+  transition: clip-path 220ms var(--int-ease-travel);
+}
+.cat-active .cat {
+  background: var(--int-primary);
+  border-color: var(--int-primary);
+  color: var(--int-on-primary);
+}
+
+/* ----------------------------------------------------------------------------
+   Skills — bento (shape follows level, a rhythm mixes the shapes)
+   -------------------------------------------------------------------------- */
+.bento {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-rows: 128px;
+  grid-auto-flow: dense;
+}
+@media (max-width: 560px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 118px;
+    gap: 10px;
+  }
+}
+.tile {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px;
+  border-radius: 26px;
+  background: var(--int-sc-low);
+  color: var(--int-on-surface);
+  transition: transform var(--int-dur-normal) var(--int-ease-settle),
+    box-shadow var(--int-dur-normal) var(--int-ease-standard);
+}
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover {
+    transform: scale(1.015);
+    box-shadow: var(--int-elev-3);
+  }
+}
+.tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+.tile-ico {
+  font-size: 22px;
+  color: var(--int-primary);
+}
+.tile-name {
+  margin: 0;
+  font: 700 16px/20px var(--int-font);
+  letter-spacing: -0.2px;
+  overflow-wrap: anywhere;
+}
+.tile-sub {
+  margin: 0;
+  font: 500 12px/16px var(--int-font);
+  color: var(--int-on-surface-variant);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tile-num {
+  font: 600 13px/1 var(--int-mono);
+  color: var(--int-xp-ink);
+}
+.tile-num-lg {
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+.tile-push {
+  margin-top: auto;
+}
+.tile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.tile-tag {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--int-sc-highest);
+  color: var(--int-on-surface-variant);
+  font: 500 12px/16px var(--int-font);
+}
+/* The skill's own mark, large and faint in the corner of every tile */
+.tile-deco {
+  position: absolute;
+  right: -14px;
+  bottom: -18px;
+  z-index: -1;
+  font-size: 92px;
+  opacity: 0.09;
+  pointer-events: none;
+}
+.s-big .tile-deco {
+  font-size: 170px;
+  right: -22px;
+  bottom: -30px;
+}
+.s-tall .tile-deco {
+  font-size: 130px;
+  right: -26px;
+  bottom: -20px;
+}
+.s-wide .tile-deco {
+  font-size: 120px;
+  right: 72px;
+  bottom: -34px;
+}
+.s-big {
+  grid-column: span 2;
+  grid-row: span 2;
+  padding: 24px;
+}
+.s-tall {
+  grid-row: span 2;
+}
+.s-wide {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+.s-big .tile-name {
+  font: 800 36px/38px var(--int-font);
+  letter-spacing: -1.2px;
+}
+.s-big .tile-ctx {
+  margin: 6px 0 0;
+  font: 700 15px/20px var(--int-font);
+  color: var(--int-xp-ink);
+}
+.s-tall .tile-name {
+  font: 800 24px/26px var(--int-font);
+  letter-spacing: -0.6px;
+}
+.s-wide .tile-name {
+  font: 800 22px/26px var(--int-font);
+  letter-spacing: -0.5px;
+}
+.s-wide .lvl-ring {
+  margin-left: auto;
+  flex: none;
+}
+/* Surfaces */
+.f-night {
+  background: #160b0e;
+  color: #ffedec;
+}
+.f-crimson {
+  background: radial-gradient(110% 90% at 100% 0%, rgba(252, 182, 20, 0.3), transparent 58%),
+    linear-gradient(155deg, #5a0216, #7c0320 55%, #a32638);
+  color: #ffedec;
+}
+.f-night .tile-sub,
+.f-crimson .tile-sub {
+  color: rgba(255, 237, 236, 0.68);
+}
+.f-night .tile-tag,
+.f-crimson .tile-tag {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffedec;
+}
+.f-night .tile-ico,
+.f-crimson .tile-ico,
+.f-night .tile-num,
+.f-crimson .tile-num,
+.f-night .tile-ctx,
+.f-crimson .tile-ctx {
+  color: var(--int-gold);
+}
+.f-night .tile-deco,
+.f-crimson .tile-deco {
+  opacity: 0.13;
+}
+.f-gold {
+  background: color-mix(in srgb, var(--int-gold) 16%, var(--int-bg));
+}
+.f-gold .tile-ico {
+  color: var(--int-xp-ink);
+}
+.f-rose {
+  background: var(--int-secondary-container);
+  color: var(--int-on-secondary-container);
+}
+.f-rose .tile-ico,
+.f-rose .tile-sub {
+  color: color-mix(in srgb, var(--int-on-secondary-container) 75%, transparent);
+}
+.f-plain {
+  background: var(--int-sc-low);
+  box-shadow: inset 0 0 0 1px var(--int-hair);
+}
+.f-quiet {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--int-hair);
+}
+.f-quiet .tile-name {
+  color: var(--int-on-surface-variant);
+  font-weight: 600;
+}
+@media (hover: hover) and (pointer: fine) {
+  .f-plain:hover,
+  .f-quiet:hover {
+    box-shadow: inset 0 0 0 1px var(--int-hair), var(--int-elev-3);
+  }
+}
+/* Level ring + meter — drawn once, when the grid first scrolls into view */
+.lvl-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+}
+.lvl-ring svg {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+.lvl-ring .trk {
+  stroke: color-mix(in srgb, currentColor 14%, transparent);
+}
+.lvl-ring .val {
+  stroke: var(--int-crimson);
+  stroke-dasharray: 100;
+  stroke-dashoffset: var(--off);
+}
+.f-night .lvl-ring .val,
+.f-crimson .lvl-ring .val {
+  stroke: var(--int-gold);
+}
+.lvl-ring span {
+  font: 600 15px/1 var(--int-mono);
+}
+.tile-meter {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  overflow: hidden;
+}
+.tile-bar,
+.sk-bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transform-origin: left;
+  transform: scaleX(var(--p));
+  background: linear-gradient(90deg, var(--int-crimson), var(--int-orange));
+}
+.f-crimson .tile-bar,
+.f-night .tile-bar {
+  background: var(--int-gold);
+}
+.is-drawn .tile-bar,
+.is-drawn .sk-bar {
+  animation: int-bar var(--int-dur-entrance) var(--int-ease-settle) both;
+  animation-delay: calc(min(var(--i, 0), 16) * 25ms);
+}
+.is-drawn .lvl-ring .val {
+  animation: int-ring 520ms var(--int-ease-settle) both;
+  animation-delay: calc(min(var(--i, 0), 16) * 25ms);
+}
+.bento:not(.is-drawn) .tile-bar,
+.sk-grid:not(.is-drawn) .sk-bar {
+  transform: scaleX(0);
+}
+.bento:not(.is-drawn) .lvl-ring .val {
+  stroke-dashoffset: 100;
+}
+@keyframes int-bar {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes int-ring {
+  from {
+    stroke-dashoffset: 100;
+  }
+}
+
+/* Grid view */
+.sk-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.sk-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-width: 0;
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--int-sc-low);
+  border: 1px solid var(--int-hair);
+  box-shadow: var(--int-elev-1);
+}
+.sk-card .tile-deco {
+  font-size: 72px;
+  right: -10px;
+  bottom: -14px;
+}
+.sk-meter {
+  height: 6px;
+  margin: 10px 0 12px;
+  border-radius: 3px;
+  background: var(--int-sc-highest);
+  overflow: hidden;
+}
+
+/* Entering tiles (filter / view switch) */
+.tile-enter {
+  animation: int-pop 200ms var(--int-ease-settle) both;
+  animation-delay: calc(min(var(--i, 0), 12) * 20ms);
+}
+@keyframes int-pop {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.97);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Projects
+   -------------------------------------------------------------------------- */
+.proj {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--int-bg);
+  border: 1px solid var(--int-hair);
+  box-shadow: var(--int-elev-2);
+  transition: transform 200ms var(--int-ease-settle), box-shadow 200ms var(--int-ease-standard);
+}
+.proj-open {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.proj-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 26px;
+  background: linear-gradient(135deg, var(--int-crimson), var(--int-orange));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+/* A project's real app icon (public/projects/*) instead of a glyph */
+.proj-icon.has-img,
+.dlg-head .proj-icon.has-img {
+  /* The PNG/SVG is a full-bleed tile itself: no frame, no backing colour */
+  overflow: hidden;
+  background: transparent;
+  box-shadow: var(--int-elev-1);
+}
+.proj-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.proj-go {
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  font-size: 22px;
+  color: var(--int-on-surface-variant);
+  transition: transform 200ms var(--int-ease-settle), color var(--int-dur-fast) var(--int-ease-standard);
+}
+.proj-links {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.proj-links .btn {
+  height: 32px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+.proj .chip {
+  height: 26px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .proj:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--int-elev-4);
+  }
+  .proj:hover .proj-go {
+    transform: translateX(3px);
+    color: var(--int-primary);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   PrimeNG bridge + chromeless project dialog
+   -------------------------------------------------------------------------- */
+:root {
+  --p-dialog-background: var(--int-surface-bright);
+  --p-dialog-color: var(--int-on-surface);
+  --p-dialog-border-color: transparent;
+  --p-overlay-modal-background: var(--int-surface-bright);
+  --p-content-background: var(--int-surface-bright);
+}
 .p-dialog-mask {
   backdrop-filter: blur(3px);
 }
-
-/* ----------------------------------------------------------------------------
-   Project dialog — chromeless shell.
-   We render our own header band, single close button and single scroll region,
-   so suppress PrimeNG's own header/close and content padding to avoid the
-   "dialog within a dialog" (double close icon / double scrollbar) effect.
-   -------------------------------------------------------------------------- */
 .project-dialog.p-dialog {
   overflow: hidden;
-  border-radius: 1rem;
-  border: none !important; /* drop PrimeNG's default 1px surface border */
+  border-radius: 28px;
+  border: none !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
 }
 .project-dialog .p-dialog-header,
 .project-dialog .p-dialog-header-icons {
@@ -196,113 +1286,135 @@
 }
 .project-dialog .p-dialog-content {
   padding: 0 !important;
-  overflow: hidden !important; /* our inner body owns the only scrollbar */
-  border-radius: 1rem;
+  overflow: hidden !important;
+  border-radius: 28px;
 }
-
-/* Skills category filter — custom Tailwind chip buttons (see skills.component.ts).
-   Suppress the focus ring (PrimeNG's styled-mode global focus outline/box-shadow
-   otherwise flashes on click), while preserving the active chip's brand glow. */
-.skill-chip {
-  -webkit-tap-highlight-color: transparent;
+.dlg-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 20px 22px 24px;
+  color: #ffedec;
+  background: linear-gradient(135deg, #5a0216, #7c0320 55%, #a32638);
 }
-.skill-chip:focus,
-.skill-chip:focus-visible {
-  outline: none !important;
-  box-shadow: none !important;
+.dlg-head .proj-icon {
+  flex: none;
+  background: rgba(255, 255, 255, 0.14);
 }
-.skill-chip[aria-pressed='true'],
-.skill-chip[aria-pressed='true']:focus,
-.skill-chip[aria-pressed='true']:focus-visible {
-  /* matches Tailwind `shadow-glow` so the selected chip keeps its glow */
-  box-shadow: 0 0 0 1px rgba(168, 6, 51, 0.15),
-    0 12px 32px -12px rgba(168, 6, 51, 0.45) !important;
+.dlg-close {
+  color: #ffedec;
+  align-self: flex-start;
+  margin-left: auto;
 }
-
-/* Primary CTA — a slow shine sweep across the button. */
-.cta-shine {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-.cta-shine::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(
-    120deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.28) 50%,
-    transparent 65%
-  );
-  background-size: 220% 100%;
-  animation: shimmer 3.2s ease-in-out infinite;
-}
-
-/* Animated gradient border for interactive elements (cards, buttons, inputs).
-   Uses a masked ::before ring so it overlays without affecting layout; the
-   gradient pans while visible. Shown on hover / focus-within. */
-.anim-border {
-  position: relative;
-}
-.anim-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 0.75px;
-  background: linear-gradient(
-    120deg,
-    rgb(var(--gs-crimson)),
-    rgb(var(--gs-gold)),
-    rgb(var(--gs-crimson))
-  );
-  background-size: 220% 100%;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
-  animation: gradient-pan 4s linear infinite;
-}
-.anim-border:hover::before,
-.anim-border:focus-within::before {
-  opacity: 1;
-}
-
-/* Faint animated ambient glow blobs for section backgrounds. */
-.bg-ambient {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-}
-.bg-ambient > * {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(64px);
-}
-
-/* Respect users who prefer reduced motion — pause the ambient idle loops. */
-@media (prefers-reduced-motion: reduce) {
-  .animate-gradient-pan,
-  .animate-drift-a,
-  .animate-drift-b,
-  .animate-float,
-  .animate-pulse-soft,
-  .animate-pulse-node,
-  .animate-spin-slow,
-  .animate-wiggle,
-  .animate-bob-x,
-  .animate-shimmer {
-    animation: none !important;
+@media (hover: hover) and (pointer: fine) {
+  .dlg-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
   }
-  .cta-shine::after,
-  .anim-border::before {
-    animation: none !important;
+}
+
+/* ── Lightweight prose styles for ngx-markdown output ──────────────────── */
+.prose-portfolio {
+  color: var(--int-on-surface-variant);
+  font: 400 15px/25px var(--int-font);
+
+  h1 {
+    @apply mb-4 mt-0 text-2xl font-extrabold text-content;
+  }
+  h2 {
+    @apply mb-2 mt-6 text-lg font-bold text-content;
+  }
+  h3 {
+    @apply mb-2 mt-5 text-base font-bold text-content;
+  }
+  h4 {
+    @apply mb-1 mt-4 text-sm font-bold uppercase tracking-wide text-content;
+  }
+  p {
+    @apply my-3;
+  }
+  a {
+    color: var(--int-primary);
+    @apply font-medium underline underline-offset-2;
+  }
+  strong {
+    color: var(--int-on-surface);
+    font-weight: 600;
+  }
+  ul {
+    @apply my-3 list-disc space-y-1.5 pl-5;
+  }
+  ol {
+    @apply my-3 list-decimal space-y-1.5 pl-5;
+  }
+  code {
+    font: 500 13px/1 var(--int-mono);
+    background: var(--int-sc-high);
+    color: var(--int-on-surface);
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+  hr {
+    @apply my-6 border-hairline;
+  }
+  blockquote {
+    @apply my-4 border-l-4 pl-4 italic;
+    border-color: var(--int-gold);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Scrollbar
+   -------------------------------------------------------------------------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--gs-crimson) / 0.55) transparent;
+}
+
+/* ----------------------------------------------------------------------------
+   Reduced motion — fewer and gentler: opacity stays, movement goes
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .rise,
+  .tile-enter {
+    animation-name: int-fade;
+  }
+  .reveal-pending {
+    transform: none;
+  }
+  .tl-detail.is-out,
+  .tl-detail.is-in-start {
+    transform: none;
+    filter: none;
+  }
+  .tl-kids ol {
+    transform: none;
+  }
+  .tile:hover,
+  .proj:hover {
+    transform: none !important;
+  }
+  .is-drawn .tile-bar,
+  .is-drawn .sk-bar,
+  .is-drawn .lvl-ring .val {
+    animation: none;
+  }
+  .bento:not(.is-drawn) .tile-bar,
+  .sk-grid:not(.is-drawn) .sk-bar {
+    transform: scaleX(var(--p));
+  }
+  .bento:not(.is-drawn) .lvl-ring .val {
+    stroke-dashoffset: var(--off);
+  }
+  .int-ripple {
+    display: none;
+  }
+  @keyframes int-fade {
+    from {
+      opacity: 0;
+    }
   }
 }

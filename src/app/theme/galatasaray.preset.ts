@@ -2,90 +2,83 @@ import { definePreset } from '@primeng/themes';
 import Aura from '@primeng/themes/aura';
 
 /**
- * Galatasaray-themed PrimeNG preset.
+ * INT Design System preset for PrimeNG (Galatasaray crimson + gold).
  *
- * Built on top of the Aura base preset, this overrides the `primary` colour
- * ramp with Galatasaray crimson (#a80633) and re-points the highlight / focus
- * tokens so every PrimeNG component (dialogs, buttons, select-buttons, chips,
- * sliders…) inherits the brand instead of the default emerald/blue presets.
- *
- * The gold accent (#fbbb20) is applied through Tailwind utilities at the
- * component level rather than as the PrimeNG `primary`, keeping crimson as the
- * dominant interactive colour and gold as the secondary highlight.
+ * Built on Aura; re-points `primary` to the DS crimson tonal palette and the
+ * surface ramps to the DS warm, rose-tinted neutrals so every PrimeNG component
+ * (dialog, inputs, tooltips…) matches the INT tokens in styles.scss.
+ * Light primary = #7C0320 (ink fill), dark primary = #FFB3B5 (crimson-80).
  */
 export const GalatasarayPreset = definePreset(Aura, {
   semantic: {
     primary: {
-      50: '#fdf2f5',
-      100: '#fbe3ea',
-      200: '#f6c7d6',
-      300: '#ee9bb4',
-      400: '#e2638b',
-      500: '#a80633', // crimson — the brand primary
-      600: '#97052e',
-      700: '#85113a',
-      800: '#711336',
-      900: '#5c0f2c',
-      950: '#3f0419'
+      50: '#ffedec',
+      100: '#ffdada',
+      200: '#ffb3b5',
+      300: '#ff888f',
+      400: '#f0606e',
+      500: '#ce4756',
+      600: '#ad2e40',
+      700: '#9d2235',
+      800: '#7c0320',
+      900: '#680019',
+      950: '#40000c'
     },
     colorScheme: {
       light: {
         primary: {
-          color: '#a80633',
+          color: '#7c0320',
           contrastColor: '#ffffff',
-          hoverColor: '#85113a',
-          activeColor: '#711336'
+          hoverColor: '#8c142a',
+          activeColor: '#680019'
         },
         highlight: {
-          background: 'rgba(168, 6, 51, 0.10)',
-          focusBackground: 'rgba(168, 6, 51, 0.18)',
-          color: '#85113a',
-          focusColor: '#5c0f2c'
+          background: 'rgba(124, 3, 32, 0.08)',
+          focusBackground: 'rgba(124, 3, 32, 0.14)',
+          color: '#7c0320',
+          focusColor: '#680019'
         },
         surface: {
           0: '#ffffff',
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617'
+          50: '#fff8f7',
+          100: '#fff0f0',
+          200: '#fce9e9',
+          300: '#f5dddd',
+          400: '#dfbfbf',
+          500: '#a78a8a',
+          600: '#806566',
+          700: '#584142',
+          800: '#3b2d2e',
+          900: '#251819',
+          950: '#1c1011'
         }
       },
       dark: {
         primary: {
-          color: '#fbbb20', // gold reads better on dark surfaces
-          contrastColor: '#0f172a',
-          hoverColor: '#fcca4d',
-          activeColor: '#f59b0b'
+          color: '#ffb3b5',
+          contrastColor: '#5c1018',
+          hoverColor: '#ffdada',
+          activeColor: '#ff888f'
         },
         highlight: {
-          background: 'rgba(251, 187, 32, 0.14)',
-          focusBackground: 'rgba(251, 187, 32, 0.24)',
-          color: '#fcca4d',
-          focusColor: '#fde08a'
+          background: 'rgba(255, 179, 181, 0.12)',
+          focusBackground: 'rgba(255, 179, 181, 0.2)',
+          color: '#ffdada',
+          focusColor: '#ffedec'
         },
-        // Warm-charcoal surface ramp (subtle crimson hint, not full maroon) so
-        // PrimeNG dark-mode components — dialogs, inputs, select buttons,
-        // tooltips — match the dark canvas instead of cool slate-blue.
         surface: {
           0: '#ffffff',
-          50: '#f9f4f6',
-          100: '#efe6ea',
-          200: '#ddccd2',
-          300: '#c0a8b1',
-          400: '#9c7e8a',
-          500: '#7a5e6b',
-          600: '#5e4854',
-          700: '#483641',
-          800: '#322630',
-          900: '#221a20',
-          950: '#181317'
+          50: '#f5dddd',
+          100: '#dfbfbf',
+          200: '#a78a8a',
+          300: '#806566',
+          400: '#584142',
+          500: '#433435',
+          600: '#403131',
+          700: '#342727',
+          800: '#291c1d',
+          900: '#251819',
+          950: '#1c1011'
         }
       }
     }

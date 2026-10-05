@@ -1,84 +1,73 @@
-    <header
-      class="glass theme-transition sticky top-0 z-50 w-full transition-all duration-300 ease-in-out"
-    >
-      <!-- Crimson→gold top accent line -->
-      <div
-        class="h-0.5 w-full bg-gradient-to-r from-gs-crimson-700 via-gs-crimson-500 to-gs-gold-400"
-      ></div>
+<header class="site-header" [class.is-scrolled]="scrolled()">
+  <div class="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
+    <!-- Brand -->
+    <a href="#top" class="flex items-center gap-2.5" [attr.aria-label]="i18n.t('common.backToTop')">
+      <span class="brand-tile">SÖ</span>
+      <span class="hidden text-[17px] font-extrabold tracking-tight sm:block">Salih Özdemir</span>
+    </a>
 
-      <div
-        class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"
-      >
-        <!-- Brand -->
-        <a
-          href="#top"
-          class="group flex items-center gap-2.5"
-          [attr.aria-label]="i18n.t('common.backToTop')"
-        >
-          <span
-            class="grid h-9 w-9 place-items-center rounded-xl bg-gs-crimson-700 font-extrabold text-white shadow-glow transition-transform duration-300 ease-in-out group-hover:scale-105"
-            >SÖ</span
-          >
-          <span class="hidden text-sm font-bold tracking-tight sm:block">
-            Salih <span class="text-gs-crimson-600 dark:text-gs-gold-400">Özdemir</span>
-          </span>
-        </a>
-
-        <!-- Section nav -->
-        <nav class="hidden items-center gap-1 md:flex" aria-label="Section navigation">
+    <!-- Section nav with a travelling active pill -->
+    <nav class="nav-track ml-auto hidden md:block" aria-label="Section navigation">
+      <div class="nav-row" #navRow>
+        @for (item of nav; track item.fragment) {
           <a
-            *ngFor="let item of nav"
+            class="nav-link"
             [href]="'#' + item.fragment"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-content-muted transition-colors duration-300 ease-in-out hover:bg-surface-muted hover:text-gs-crimson-700 dark:hover:text-gs-gold-400"
+            [attr.data-fragment]="item.fragment"
+            [attr.aria-current]="active() === item.fragment ? 'location' : null"
+            >{{ i18n.t(item.key) }}</a
           >
-            {{ i18n.t(item.key) }}
-          </a>
-        </nav>
-
-        <!-- Actions: socials + language + theme toggle -->
-        <div class="flex items-center gap-1">
-          <a
-            *ngFor="let s of socials()"
-            [href]="s.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="s.label"
-            [pTooltip]="s.label"
-            tooltipPosition="bottom"
-            class="hidden h-9 w-9 place-items-center rounded-lg text-content-muted transition-all duration-300 ease-in-out hover:scale-110 hover:bg-surface-muted hover:text-gs-crimson-700 dark:hover:text-gs-gold-400 sm:grid"
-          >
-            <i [class]="s.icon" class="text-lg"></i>
-          </a>
-
-          <span class="mx-1 hidden h-6 w-px bg-hairline sm:block"></span>
-
-          <!-- Language toggle -->
-          <button
-            type="button"
-            (click)="i18n.toggle()"
-            [attr.aria-label]="i18n.t('common.switchLanguage')"
-            [pTooltip]="i18n.t('common.switchLanguage')"
-            tooltipPosition="bottom"
-            class="grid h-9 min-w-9 place-items-center rounded-lg border border-hairline bg-surface px-2 text-xs font-bold uppercase text-content-muted transition-all duration-300 ease-in-out hover:border-gs-gold-400 hover:text-gs-gold-500"
-          >
-            {{ i18n.lang() }}
-          </button>
-
-          <!-- Theme toggle -->
-          <button
-            type="button"
-            (click)="theme.toggle()"
-            [attr.aria-label]="theme.isDark() ? i18n.t('common.switchToLight') : i18n.t('common.switchToDark')"
-            [pTooltip]="theme.isDark() ? i18n.t('common.lightMode') : i18n.t('common.darkMode')"
-            tooltipPosition="bottom"
-            class="grid h-9 w-9 place-items-center rounded-lg border border-hairline bg-surface text-content-muted transition-all duration-300 ease-in-out hover:border-gs-gold-400 hover:text-gs-gold-500"
-          >
-            <i
-              class="pi text-lg transition-transform duration-300 ease-in-out"
-              [class.pi-moon]="!theme.isDark()"
-              [class.pi-sun]="theme.isDark()"
-            ></i>
-          </button>
-        </div>
+        }
       </div>
-    </header>
+      <div class="nav-row nav-active" #navActive aria-hidden="true">
+        @for (item of nav; track item.fragment) {
+          <span class="nav-link">{{ i18n.t(item.key) }}</span>
+        }
+      </div>
+    </nav>
+
+    <!-- Actions: socials + language + theme -->
+    <div class="ml-auto flex items-center gap-1 md:ml-2">
+      @for (s of socials(); track s.id) {
+        <a
+          [href]="s.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.aria-label]="s.label"
+          [pTooltip]="s.label"
+          tooltipPosition="bottom"
+          class="icon-btn hidden lg:grid"
+          appRipple
+        >
+          <i [class]="s.icon" class="text-[17px]"></i>
+        </a>
+      }
+
+      <span class="mx-1 hidden h-6 w-px bg-hairline lg:block"></span>
+
+      <div
+        class="lang-seg"
+        [class.is-de]="i18n.lang() === 'de'"
+        role="group"
+        [attr.aria-label]="i18n.t('common.language')"
+      >
+        <span class="lang-pill" aria-hidden="true"></span>
+        <button type="button" [attr.aria-pressed]="i18n.lang() === 'en'" (click)="i18n.set('en')">EN</button>
+        <button type="button" [attr.aria-pressed]="i18n.lang() === 'de'" (click)="i18n.set('de')">DE</button>
+      </div>
+
+      <button
+        type="button"
+        class="icon-btn"
+        appRipple
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.isDark() ? i18n.t('common.switchToLight') : i18n.t('common.switchToDark')"
+        [pTooltip]="theme.isDark() ? i18n.t('common.lightMode') : i18n.t('common.darkMode')"
+        tooltipPosition="bottom"
+      >
+        <app-icon name="dark_mode" class="theme-glyph" [class.is-off]="theme.isDark()" />
+        <app-icon name="light_mode" class="theme-glyph" [class.is-off]="!theme.isDark()" />
+      </button>
+    </div>
+  </div>
+</header>
