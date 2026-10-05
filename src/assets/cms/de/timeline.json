@@ -5,30 +5,84 @@
     "organisation": "adesso SE",
     "role": "Senior Software Engineer & KI-Experte",
     "title": "Engineering über Energie, Catering & generative KI hinweg",
-    "summary": "Bei der adesso SE bin ich zum Senior Software Engineer und KI-Experten herangewachsen. Ich verantworte UI-Architektur und bilde die Brücke zwischen Design und Entwicklung über sehr unterschiedliche Domänen hinweg — von der Disposition in der Energiewirtschaft bis zu Catering-Plattformen — und treibe zugleich die Einführung generativer KI im Unternehmen voran.",
+    "summary": "Bei der adesso SE bin ich vom Software Engineer zum Senior Software Engineer und KI-Experten gewachsen (Beförderung 2025). Ich verantworte UI-Architektur und bilde die Brücke zwischen Design und Entwicklung über sehr unterschiedliche Domänen hinweg — von der Disposition in der Energiewirtschaft bis zu Catering-Plattformen — und konzipiere und realisiere heute generative KI-Lösungen für adesso und seine Kunden.",
     "responsibilities": [
       "Ich leite die UI-Architektur und Designsystem-Arbeit mit Angular, PrimeNG, Tailwind CSS und Telerik/Kendo",
       "Ich bilde als Ansprechpartner für UI/UX die Brücke zwischen Design- und Entwicklungsteams",
       "Ich treibe generatives KI-Enablement und moderne DevOps-Praktiken voran",
+      "Ich konzipiere und baue Enterprise-KI-Lösungen — RAG-Assistenten, Website-Chatbots und LLM-Konzepte — für Kunden auf Azure",
       "Ich coache Entwickler zu UI/UX-Exzellenz und unterstütze bei der Einstellung"
     ],
-    "techStack": ["Angular", "PrimeNG", "Tailwind CSS", "C#", ".NET", "Blazor", "Flutter", "AWS"],
+    "techStack": ["Angular", "PrimeNG", "Tailwind CSS", "C#", ".NET", "Blazor", "Flutter", "AWS", "Azure OpenAI", "Microsoft Agent Framework"],
     "current": true,
     "children": [
       {
         "id": "adessogpt",
-        "period": "2026 – heute",
+        "period": "2025 – heute",
         "organisation": "adessoGPT · adesso SE",
         "role": "KI-Experte & DevOps",
         "title": "Generatives KI-Enablement im großen Maßstab",
-        "summary": "Ich leite das generative KI-Enablement in der Initiative adessoGPT und helfe Teams im gesamten Unternehmen, KI produktiv einzusetzen — bei gleichzeitig soliden DevOps- und Delivery-Praktiken.",
+        "summary": "adessoGPT ist die modulare KI-Plattform von adesso und die Grundlage für kundenindividuelle CompanyGPT-Lösungen. Ich entwickle die Plattform nach Releaseplan weiter und begleite Kunden bei Planung und Einführung ihres eigenen CompanyGPT — damit generative KI, Retrieval-Augmented Generation (RAG) und KI-Agenten sicher in ihre täglichen Prozesse einziehen.",
         "responsibilities": [
+          "Ich entwickle die adessoGPT-Plattform nach Releaseplan weiter — mit passenden DevOps- und Delivery-Praktiken",
+          "Ich begleite Kunden bei Planung und Umsetzung von adessoGPT als eigenes CompanyGPT",
+          "Ich binde Wissens- und Datenquellen per Retrieval-Augmented Generation (RAG) an",
+          "Ich baue spezialisierte KI-Assistenten und Agenten mit dem Microsoft Agent Framework und MCP-Servern",
           "Ich ermögliche die Einführung generativer KI über Teams und Use Cases hinweg",
-          "Ich gestalte die DevOps- und Delivery-Praktiken der Plattform",
-          "Ich prototype und bewerte KI-gestützte Engineering-Workflows"
+          "Ich prototype und bewerte KI-gestützte Engineering-Workflows mit Claude Code"
         ],
-        "techStack": ["Generative KI", "Conversational AI", "DevOps", "Azure", "C#"],
-        "current": true
+        "techStack": ["Generative KI", "RAG", "Azure OpenAI", "Azure AI Search", "Microsoft Agent Framework", "MCP", "Claude Code", "Conversational AI", "Azure", "DevOps", "C#"],
+        "current": true,
+        "children": [
+          {
+            "id": "housing-knowledge-assistant",
+            "period": "2026 – heute",
+            "organisation": "Vivawest Wohnen GmbH",
+            "role": "KI-Experte, Architekt & Entwickler",
+            "title": "Ein unternehmensweites CorporateGPT mit Quellenangaben",
+            "summary": "Ich konzipiere und realisiere einen unternehmensweiten KI-Chat-Assistenten, der den Mitarbeitenden von Vivawest einen zentralen, einheitlichen Zugang zu Intranet, Prozess- und Wissensmanagement bietet — jede Antwort mit belegbaren Quellenangaben. Dabei habe ich die ursprüngliche Architektur einer technischen und kaufmännischen Machbarkeitsprüfung unterzogen und sie auf die nativen Fähigkeiten von adessoGPT umgemappt.",
+            "responsibilities": [
+              "Ich binde Weaviate als Vektordatenbank hinter dem Assistenten an",
+              "Ich verbinde Wissensmanagement-, Intranet- und Prozessmanagement-Quellen mit dem KI-System",
+              "Ich prüfte die ursprüngliche Architektur auf technische und kaufmännische Machbarkeit und leitete daraus eine angepasste Architekturempfehlung ab",
+              "Ich stimmte diese Empfehlung mit den Plattform-Architekten ab — Vektordatenbanken, Observability, Betriebsmodell, Modell-Governance, Agenten-Workflows und CI/CD",
+              "Ich sichere Abnahme und Antwortqualität mit Golden Set, Hard Constraints und Compliance-Checkliste ab"
+            ],
+            "techStack": [".NET", "Azure", "Azure OpenAI", "Azure AI Search", "Weaviate", "Microsoft Agent Framework", "Azure DevOps", "RAG"],
+            "current": true
+          },
+          {
+            "id": "website-chatbot",
+            "period": "2026 – heute",
+            "organisation": "Borussia Dortmund (BVB)",
+            "role": "KI-Experte & Entwickler",
+            "title": "Ein KI-Chatbot direkt auf bvb.de",
+            "summary": "Ich entwerfe und entwickle das Chat-Widget für einen KI-gestützten Assistenten, der in bvb.de, die Website von Borussia Dortmund, eingebettet ist. Fans stellen ihre Fragen in natürlicher Sprache und erhalten kontextbezogene Antworten aus den angebundenen Inhaltsquellen — im Corporate Design der Website und konsistent auf allen Endgeräten.",
+            "responsibilities": [
+              "Ich entwerfe das Chatbot-Widget und seine Dialogführung",
+              "Ich entwickle das Widget mit Angular auf einem .NET-Backend",
+              "Ich bette es nahtlos in den bestehenden Webauftritt und sein Corporate Design ein",
+              "Ich achte auf hohe Antwortqualität und ein konsistentes Erlebnis auf allen Endgeräten"
+            ],
+            "techStack": ["Angular", ".NET", "Microsoft Agent Framework", "Generative KI", "Claude Code"],
+            "current": true
+          },
+          {
+            "id": "erms-ai-concept",
+            "period": "2026",
+            "organisation": "AOK Bayern",
+            "role": "KI-Experte & Architekt",
+            "title": "LLMs im E-Mail-Response-Management",
+            "summary": "Für die AOK Bayern analysierte ich, wie eingehende Kunden-E-Mails das bestehende E-Mail-Response-Management-System (ERMS) durchlaufen, und konzipierte, wie Large Language Models den gesamten Prozess unterstützen können — von der Eingangsklassifikation über die Antworterstellung bis zur Archivierung — unter strengen Datenschutz- und Compliance-Anforderungen.",
+            "responsibilities": [
+              "Ich analysierte die E-Mail-Bearbeitung End-to-End und definierte und priorisierte geeignete LLM-Use-Cases",
+              "Ich erarbeitete Zielbild und Governance — Rollen, Freigabemechanismen, Qualitätskriterien, Fehlertoleranzen und No-Gos, vom Vorschlagsmodus bis zur vollautomatisierten Antwort",
+              "Ich entwarf die technische Zielarchitektur und das Integrationskonzept inklusive Schnittstellen, Datenflüssen, Informationssicherheit, Datenminimierung und Compliance",
+              "Ich gestaltete die Pilotierungsstrategie mit KPIs und Erfolgskriterien sowie ein grobes Betriebs- und Supportkonzept mit"
+            ],
+            "techStack": ["Generative KI", "Requirements Engineering", "Azure", "Miro", "Mermaid"]
+          }
+        ]
       },
       {
         "id": "gantner",
@@ -36,14 +90,14 @@
         "organisation": "Gantner DigiRest GmbH",
         "role": "Software Engineer, UX Developer & Coach",
         "title": "Modernisierung der Catering-Suite (MaxxLive · MaxxConference · MaxxApp)",
-        "summary": "Ich arbeite an der Catering-Suite von Gantner DigiRest — Angular-Webanwendungen (MaxxLive, MaxxConference) und eine Flutter-App (MaxxApp) für Kantinenbestellung und Guthabenverwaltung — und modernisiere Tech-Stack und Erlebnis.",
+        "summary": "Ich arbeitete an der Catering-Suite von Gantner DigiRest — Angular-Webanwendungen (MaxxLive für die tägliche Kantinenbestellung, MaxxConference für Konferenz-Catering) und eine Flutter-App (MaxxApp) — in der Mitarbeitende Essen bestellen und ihr Guthaben per Lohn und Gehalt, Karte, PayPal oder SEPA aufladen, abgewickelt über mehrere Zahlungsanbieter. Jeder Kunde passt das Verhalten über ein umfangreiches Setup-Modul an; ich modernisierte Tech-Stack und Nutzererlebnis.",
         "responsibilities": [
-          "Ich setze Kundenanforderungen um und verbessere den Tech-Stack",
-          "Ich binde Zahlungsanbieter an und überarbeite sie (z. B. Adyen)",
-          "Ich treibe Designupdates und den Rebrand von contidata zu Gantner voran",
-          "Ich pflege die plattformübergreifende MaxxApp"
+          "Ich setzte Kundenanforderungen um und verbesserte den Tech-Stack",
+          "Ich band Zahlungsanbieter an und überarbeitete sie (z. B. Adyen)",
+          "Ich trieb Designupdates und den Rebrand von contidata zu Gantner voran",
+          "Ich pflegte die plattformübergreifende MaxxApp"
         ],
-        "techStack": ["Angular", "Telerik / Kendo", "PrimeNG", "Tailwind CSS", "C#", "Flutter", "Keycloak"]
+        "techStack": ["Angular", "Telerik / Kendo", "PrimeNG", "Tailwind CSS", "C#", "Flutter", "Dart", "MS SQL", "Keycloak", "Adyen"]
       },
       {
         "id": "beyonnex",
@@ -51,14 +105,15 @@
         "organisation": "beyonnex.io GmbH",
         "role": "Fullstack Engineer & UI-Lead",
         "title": "Neuarchitektur der Enterprise-Disposition (BxTrack)",
-        "summary": "Bei BxTrack — der zentralen Dispositionsdrehscheibe für den Außendienst in der Energiewirtschaft — übernahm ich die Rolle des UI-Leads und steuerte die Migration eines Legacy-Portals von ASP.NET MVC zu einer modernen Blazor-Server-Architektur, inklusive der Konzeption der Mandantenfähigkeit.",
+        "summary": "Bei BxTrack — der zentralen Auftrags- und Dispositionsdrehscheibe für den Außendienst in der Energiewirtschaft, die per Apache Kafka bidirektional mit Salesforce und SAP kommuniziert — übernahm ich in einem Team von 8–12 Entwicklern die Rolle des UI-Leads und steuerte die Migration eines Legacy-Portals von ASP.NET MVC zu einer modernen Blazor-Server-Architektur, inklusive der Konzeption der Mandantenfähigkeit. Die Plattform disponiert Aufträge an die App der Außendienstler, macht aus deren Berichten Kunden- und Abschlussberichte (PDF) und wickelt die E-Rechnung nach ZUGFeRD für SAP ab.",
         "responsibilities": [
           "Ich leitete die UI-Migration von ASP.NET MVC zu Blazor Server mit Telerik & MudBlazor",
+          "Ich modernisierte die UI-Architektur und setzte UI/UX-Designs aus Figma um",
           "Ich konzipierte die Mandantenfähigkeit über Stammdaten- und Auftragsverwaltung hinweg",
           "Ich betrieb die AWS-Infrastruktur (RDS, EKS, ECR), vollständig als Terraform-IaC",
           "Ich etablierte UI-Quality-Gates und unterstützte bei Bewerbungsgesprächen"
         ],
-        "techStack": ["Blazor", "MudBlazor", "C#", ".NET Core", "ASP.NET MVC", "AWS", "Terraform", "Apache Kafka", "GitLab CI/CD"]
+        "techStack": ["Blazor", "MudBlazor", "Telerik", "C#", ".NET Core", "ASP.NET MVC", "Entity Framework", "MS SQL", "AWS", "Terraform", "Apache Kafka", "GitLab CI/CD"]
       }
     ]
   },
@@ -83,33 +138,34 @@
         "organisation": "ITM.KirA · XMeld",
         "role": "Software Engineer",
         "title": "Meisterung des XMeld-Standards",
-        "summary": "Ich entwickelte das XMeld-Verarbeitungsmodul im Herzen von ITM.KirA — ich verwandelte umfangreiche XML-Meldedatenströme in eine verlässliche Single Source of Truth und aggregierte fragmentierte Personendaten zu höchstmöglicher Datenkorrektheit.",
+        "summary": "Ich entwickelte das XMeld-Verarbeitungsmodul im Herzen von ITM.KirA — ich verwandelte umfangreiche XML-Meldedatenströme in eine verlässliche Single Source of Truth und aggregierte fragmentierte Personendaten zu höchstmöglicher Datenkorrektheit; genau diese Herausforderung habe ich auch in meiner Bachelorarbeit vertieft.",
         "responsibilities": [
           "Ich aktualisierte die XMeld-Verarbeitung auf XMeld 3.0 mit Bruttonachrichten",
           "Ich aggregierte konkurrierende Personendatenquellen zu maßgeblichen Datensätzen",
           "Ich löste komplexe Einzelfälle im Meldewesen in Sprechstunden",
-          "Ich analysierte Big-Data- und KI-Einsatzmöglichkeiten im kirchlichen Umfeld"
+          "Ich analysierte Big-Data- und KI-Einsatzmöglichkeiten im kirchlichen Umfeld",
+          "Ich entwickelte die XMeld-Verarbeitung kontinuierlich weiter und unterstützte in weiteren ITM.KirA-Modulen"
         ],
-        "techStack": ["C#", ".NET", "XMeld", "NServiceBus", "MSMQ", "Azure DevOps", "DDD"]
+        "techStack": ["C#", ".NET", "ASP.NET MVC", "TypeScript", "XMeld", "NServiceBus", "MSMQ", "Azure DevOps", "DDD"]
       },
       {
         "id": "landingpages",
         "period": "2020 – 2022",
         "organisation": "ITM.Landingpages",
-        "role": "Software Engineer & UX Designer",
+        "role": "Software Engineer & UI/UX-Designer",
         "title": "Kampagnen-Landingpages & E-Marketing",
-        "summary": "Ich baute eine Sammlung von Landingpages für Produkteinführungen, Digitalisierungskampagnen und Veranstaltungsräume und verband sie mit E-Marketing-Tools und der Deployment-Pipeline.",
+        "summary": "Ich baute eine Sammlung von Landingpages für Produkteinführungen, Digitalisierungskampagnen und Veranstaltungsräume und verband sie mit E-Marketing-Tools — inklusive Opt-in-Anmeldungen, die E-Mail-Kampagnen speisten — sowie mit der Deployment-Pipeline.",
         "responsibilities": [
           "Ich entwickelte Landingpages und band sie an E-Marketing-Tools an",
           "Ich baute CI/CD-Pipelines und unterstützte beim Deployment"
         ],
-        "techStack": ["Angular", "TypeScript", "SCSS", "RxJS", "Docker", "Azure DevOps"]
+        "techStack": ["Angular", "TypeScript", "SCSS", "RxJS", "Material Design", "Bootstrap", "Docker", "Azure DevOps"]
       },
       {
         "id": "gemeindeplaner",
         "period": "2019 – 2021",
         "organisation": "ITM.Gemeindeplaner",
-        "role": "Software Engineer & Requirements Engineer",
+        "role": "Software Engineer, Requirements Engineer & UX Developer",
         "title": "Planungstool für die Gemeindearbeit",
         "summary": "Ich entwickelte den ITM.Gemeindeplaner durchgängig — ein Werkzeug, das Gemeinden bei der Planung und Verwaltung von Gottesdiensten, Agenden und Ressourcen unterstützt — verantwortete die UI und unterstützte das Anforderungsmanagement.",
         "responsibilities": [
@@ -117,7 +173,7 @@
           "Ich entwarf und implementierte die UI",
           "Ich unterstützte das Anforderungsmanagement und pflegte die CI/CD-Pipelines"
         ],
-        "techStack": ["Angular 10", "C#", ".NET", "NServiceBus", "MSMQ", "Kubernetes", "Helm", "Docker"]
+        "techStack": ["Angular 10", "TypeScript", "RxJS", "C#", ".NET", "DDD", "NServiceBus", "MSMQ", "Kubernetes", "Helm", "Docker"]
       },
       {
         "id": "kira",
@@ -130,7 +186,7 @@
           "Ich entwickelte die Software in Front- und Backend",
           "Ich unterstützte das Anforderungsmanagement"
         ],
-        "techStack": ["Angular", "C#", ".NET", "NServiceBus", "RavenDB", "Azure DevOps"]
+        "techStack": ["Angular", "TypeScript", "C#", ".NET", "DDD", "NServiceBus", "RavenDB", "Azure DevOps"]
       }
     ]
   },

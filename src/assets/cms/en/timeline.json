@@ -5,14 +5,15 @@
     "organisation": "adesso SE",
     "role": "Senior Software Engineer & AI Expert",
     "title": "Engineering across energy, catering & generative AI",
-    "summary": "At adesso SE I've grown into a Senior Software Engineer and AI Expert, leading UI architecture and bridging design and development across very different domains — from enterprise energy dispatch to catering platforms — while driving the adoption of generative AI throughout the company.",
+    "summary": "At adesso SE I've grown from Software Engineer into a Senior Software Engineer and AI Expert (promoted in 2025). I lead UI architecture and bridge design and development across very different domains — from enterprise energy dispatch to catering platforms — and today I design and deliver generative-AI solutions for adesso and its customers.",
     "responsibilities": [
       "I lead UI architecture and design-system work with Angular, PrimeNG, Tailwind CSS and Telerik/Kendo",
       "I bridge the gap between design and engineering teams as the go-to person for UI/UX",
       "I drive generative-AI enablement and modern DevOps practices",
+      "I design and build enterprise AI solutions — RAG assistants, website chatbots and LLM concepts — for customers on Azure",
       "I coach engineers on UI/UX excellence and support technical hiring"
     ],
-    "techStack": ["Angular", "PrimeNG", "Tailwind CSS", "C#", ".NET", "Blazor", "Flutter", "AWS"],
+    "techStack": ["Angular", "PrimeNG", "Tailwind CSS", "C#", ".NET", "Blazor", "Flutter", "AWS", "Azure OpenAI", "Microsoft Agent Framework"],
     "current": true,
     "children": [
       {
@@ -21,29 +22,82 @@
         "organisation": "adessoGPT · adesso SE",
         "role": "AI Expert & DevOps",
         "title": "Generative-AI enablement at scale",
-        "summary": "I direct generative-AI enablement on the adessoGPT initiative, helping teams across the company adopt AI productively while keeping DevOps and delivery practices solid.",
+        "summary": "adessoGPT is adesso's modular AI platform and the foundation for customer-specific CompanyGPT solutions. I develop the platform along its release plan and help customers plan and roll out their own CompanyGPT — bringing generative AI, retrieval-augmented generation (RAG) and AI agents securely into their everyday processes.",
         "responsibilities": [
+          "I develop the adessoGPT platform along its release plan, with DevOps and delivery practices to match",
+          "I help customers plan and implement adessoGPT as their own CompanyGPT",
+          "I connect company knowledge and data sources via retrieval-augmented generation (RAG)",
+          "I build specialised AI assistants and agents with the Microsoft Agent Framework and MCP servers",
           "I enable generative-AI adoption across teams and use cases",
-          "I shape DevOps and delivery practices for the platform",
-          "I prototype and evaluate AI-assisted engineering workflows"
+          "I prototype and evaluate AI-assisted engineering workflows with Claude Code"
         ],
-        "techStack": ["Generative AI", "Conversational AI", "DevOps", "Azure", "C#"],
-        "current": true
+        "techStack": ["Generative AI", "RAG", "Azure OpenAI", "Azure AI Search", "Microsoft Agent Framework", "MCP", "Claude Code", "Conversational AI", "Azure", "DevOps", "C#"],
+        "current": true,
+        "children": [
+          {
+            "id": "housing-knowledge-assistant",
+            "period": "2026 – Present",
+            "organisation": "Vivawest Wohnen GmbH",
+            "role": "AI Expert, Architect & Developer",
+            "title": "A company-wide CorporateGPT with cited sources",
+            "summary": "I design and deliver a company-wide AI chat assistant that gives Vivawest's employees one central, consistent way into their intranet, process and knowledge-management content — with every answer backed by verifiable sources. Along the way I put the original architecture through a technical and commercial feasibility review and re-mapped it onto the native capabilities of adessoGPT.",
+            "responsibilities": [
+              "I integrate Weaviate as the vector database behind the assistant",
+              "I connect knowledge-management, intranet and process-management sources to the AI system",
+              "I reviewed the original architecture for technical and commercial feasibility and turned the result into an adapted architecture recommendation",
+              "I aligned that recommendation with the platform architects — vector stores, observability, operating model, model governance, agent workflows and CI/CD",
+              "I help secure acceptance and answer quality with a golden set, hard constraints and a compliance checklist"
+            ],
+            "techStack": [".NET", "Azure", "Azure OpenAI", "Azure AI Search", "Weaviate", "Microsoft Agent Framework", "Azure DevOps", "RAG"],
+            "current": true
+          },
+          {
+            "id": "website-chatbot",
+            "period": "2026 – Present",
+            "organisation": "Borussia Dortmund (BVB)",
+            "role": "AI Expert & Developer",
+            "title": "An AI chatbot on bvb.de",
+            "summary": "I design and build the chat widget for an AI-powered assistant embedded in bvb.de, Borussia Dortmund's website. Fans ask questions in natural language and get context-aware answers from the connected content sources — in the site's corporate design and consistent across every device.",
+            "responsibilities": [
+              "I design the chatbot widget and its conversation flow",
+              "I develop the widget with Angular on a .NET backend",
+              "I embed it seamlessly into the existing website and its corporate design",
+              "I focus on answer quality and a consistent experience across devices"
+            ],
+            "techStack": ["Angular", ".NET", "Microsoft Agent Framework", "Generative AI", "Claude Code"],
+            "current": true
+          },
+          {
+            "id": "erms-ai-concept",
+            "period": "2026",
+            "organisation": "AOK Bayern",
+            "role": "AI Expert & Architect",
+            "title": "Bringing LLMs into e-mail response management",
+            "summary": "For AOK Bayern I analysed how inbound customer e-mails flow through the existing e-mail response management system (ERMS) and designed how large language models can support the entire process — from intake classification and answer drafting to archiving — under strict data-protection and compliance requirements.",
+            "responsibilities": [
+              "I analysed the e-mail handling end-to-end and defined and prioritised suitable LLM use cases",
+              "I drafted the target picture and governance — roles, approval mechanisms, quality criteria, error tolerances and no-gos, from suggestion mode to fully automated replies",
+              "I designed the technical target architecture and integration concept, covering interfaces, data flows, information security, data minimisation and compliance",
+              "I helped shape the pilot strategy with KPIs and success criteria, plus a rough operations and support concept"
+            ],
+            "techStack": ["Generative AI", "Requirements Engineering", "Azure", "Miro", "Mermaid"]
+          }
+        ]
       },
       {
         "id": "gantner",
-        "period": "2025 – Present",
+        "period": "2025 – 2026",
         "organisation": "Gantner DigiRest GmbH",
         "role": "Software Engineer, UX Developer & Coach",
         "title": "Modernising the catering suite (MaxxLive · MaxxConference · MaxxApp)",
-        "summary": "I work on Gantner DigiRest's catering suite — Angular web apps (MaxxLive, MaxxConference) and a Flutter mobile app (MaxxApp) for canteen ordering and balance management — modernising the tech stack and the experience.",
+        "summary": "I worked on Gantner DigiRest's catering suite — Angular web apps (MaxxLive for everyday canteen ordering, MaxxConference for conference catering) and a Flutter mobile app (MaxxApp) — where employees order meals and top up their balance via payroll, card, PayPal or SEPA, processed by several payment providers. Each customer tailors the behaviour through an extensive setup module; I modernised the tech stack and the experience.",
         "responsibilities": [
-          "I implement customer requirements and improve the tech stack",
-          "I integrate and rework payment providers (e.g. Adyen)",
-          "I drive design updates and the rebrand from contidata to Gantner",
-          "I maintain the cross-platform MaxxApp"
+          "I implemented customer requirements and improved the tech stack",
+          "I integrated and reworked payment providers (e.g. Adyen)",
+          "I drove design updates and the rebrand from contidata to Gantner",
+          "I maintained the cross-platform MaxxApp"
         ],
-        "techStack": ["Angular", "Telerik / Kendo", "PrimeNG", "Tailwind CSS", "C#", "Flutter", "Keycloak"]
+        "techStack": ["Angular", "Telerik / Kendo", "PrimeNG", "Tailwind CSS", "C#", "Flutter", "Dart", "MS SQL", "Keycloak", "Adyen"]
       },
       {
         "id": "beyonnex",
@@ -51,14 +105,15 @@
         "organisation": "beyonnex.io GmbH",
         "role": "Fullstack Engineer & UI Lead",
         "title": "Re-architecting enterprise energy dispatch (BxTrack)",
-        "summary": "On BxTrack — the central dispatch hub for field operations in the energy sector — I took on the UI Lead role and steered the migration of a legacy ASP.NET MVC portal to a modern Blazor Server architecture, designing the multi-tenancy concept along the way.",
+        "summary": "On BxTrack — the central order-management and dispatch hub for field operations in the energy sector, exchanging data bidirectionally with Salesforce and SAP via Apache Kafka — I took on the UI Lead role in a team of 8–12 engineers and steered the migration of a legacy ASP.NET MVC portal to a modern Blazor Server architecture, designing the multi-tenancy concept along the way. The platform dispatches orders to the field technicians' app, turns their reports into customer and closing reports (PDF) and handles ZUGFeRD e-invoicing for SAP.",
         "responsibilities": [
           "I led the UI migration from ASP.NET MVC to Blazor Server with Telerik & MudBlazor",
+          "I modernised the UI architecture and implemented UI/UX designs from Figma",
           "I designed the multi-tenancy capability across master-data and order management",
           "I operated AWS infrastructure (RDS, EKS, ECR) provisioned entirely as Terraform IaC",
           "I established UI quality gates and supported hiring through interviews"
         ],
-        "techStack": ["Blazor", "MudBlazor", "C#", ".NET Core", "ASP.NET MVC", "AWS", "Terraform", "Apache Kafka", "GitLab CI/CD"]
+        "techStack": ["Blazor", "MudBlazor", "Telerik", "C#", ".NET Core", "ASP.NET MVC", "Entity Framework", "MS SQL", "AWS", "Terraform", "Apache Kafka", "GitLab CI/CD"]
       }
     ]
   },
@@ -83,33 +138,34 @@
         "organisation": "ITM.KirA · XMeld",
         "role": "Software Engineer",
         "title": "Mastering the XMeld registry standard",
-        "summary": "I engineered the XMeld processing module at the heart of ITM.KirA — turning high-volume XML registry feeds into a reliable single source of truth and aggregating fragmented person records into the highest-possible data correctness.",
+        "summary": "I engineered the XMeld processing module at the heart of ITM.KirA — turning high-volume XML registry feeds into a reliable single source of truth and aggregating fragmented person records into the highest-possible data correctness, a challenge I also explored in depth in my bachelor's thesis.",
         "responsibilities": [
           "I upgraded the XMeld processing to XMeld 3.0 with gross-message (Bruttonachrichten) handling",
           "I aggregated competing person-data sources into authoritative records",
           "I resolved complex individual registry cases in support consultations",
-          "I analysed Big Data & AI opportunities in the ecclesiastical domain"
+          "I analysed Big Data & AI opportunities in the ecclesiastical domain",
+          "I continuously extended the XMeld processing and supported other ITM.KirA modules"
         ],
-        "techStack": ["C#", ".NET", "XMeld", "NServiceBus", "MSMQ", "Azure DevOps", "DDD"]
+        "techStack": ["C#", ".NET", "ASP.NET MVC", "TypeScript", "XMeld", "NServiceBus", "MSMQ", "Azure DevOps", "DDD"]
       },
       {
         "id": "landingpages",
         "period": "2020 – 2022",
         "organisation": "ITM.Landingpages",
-        "role": "Software Engineer & UX Designer",
+        "role": "Software Engineer & UI/UX Designer",
         "title": "Campaign landing pages & e-marketing",
-        "summary": "I built a collection of landing pages for product launches, digitalisation campaigns and event venues, wiring them up to e-marketing tooling and the deployment pipeline.",
+        "summary": "I built a collection of landing pages for product launches, digitalisation campaigns and event venues, wiring them up to e-marketing tooling — including opt-in sign-ups that fed e-mail campaigns — and to the deployment pipeline.",
         "responsibilities": [
           "I developed landing pages and connected them to e-marketing tools",
           "I built CI/CD pipelines and supported deployment"
         ],
-        "techStack": ["Angular", "TypeScript", "SCSS", "RxJS", "Docker", "Azure DevOps"]
+        "techStack": ["Angular", "TypeScript", "SCSS", "RxJS", "Material Design", "Bootstrap", "Docker", "Azure DevOps"]
       },
       {
         "id": "gemeindeplaner",
         "period": "2019 – 2021",
         "organisation": "ITM.Gemeindeplaner",
-        "role": "Software Engineer & Requirements Engineer",
+        "role": "Software Engineer, Requirements Engineer & UX Developer",
         "title": "Planning tool for parish work",
         "summary": "I developed the ITM.Gemeindeplaner end-to-end — a tool to help parishes plan and manage services, agendas and resources — owning the UI and supporting requirements management.",
         "responsibilities": [
@@ -117,7 +173,7 @@
           "I designed and implemented the UI",
           "I supported requirements management and maintained the CI/CD pipelines"
         ],
-        "techStack": ["Angular 10", "C#", ".NET", "NServiceBus", "MSMQ", "Kubernetes", "Helm", "Docker"]
+        "techStack": ["Angular 10", "TypeScript", "RxJS", "C#", ".NET", "DDD", "NServiceBus", "MSMQ", "Kubernetes", "Helm", "Docker"]
       },
       {
         "id": "kira",
@@ -130,7 +186,7 @@
           "I developed the software front- and backend",
           "I supported requirements management"
         ],
-        "techStack": ["Angular", "C#", ".NET", "NServiceBus", "RavenDB", "Azure DevOps"]
+        "techStack": ["Angular", "TypeScript", "C#", ".NET", "DDD", "NServiceBus", "RavenDB", "Azure DevOps"]
       }
     ]
   },

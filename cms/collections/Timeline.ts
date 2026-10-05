@@ -19,8 +19,9 @@ const milestoneFields: Field[] = [
 
 /**
  * Timeline collection — career milestones for the interactive timeline.
- * Mirrors the Angular `TimelineMilestone` model, including one level of nested
- * `children` (roles/projects within an employer/tenure).
+ * Mirrors the Angular `TimelineMilestone` model, including two levels of nested
+ * `children`: roles/projects within an employer, and e.g. customer projects
+ * within a product (adesso → adessoGPT → Vivawest / BVB / AOK).
  */
 export const Timeline: CollectionConfig = {
   slug: 'timeline',
@@ -40,7 +41,16 @@ export const Timeline: CollectionConfig = {
       type: 'array',
       labels: { singular: 'Sub-entry', plural: 'Sub-entries' },
       admin: { description: 'Nested roles/projects within this employer/tenure.' },
-      fields: milestoneFields
+      fields: [
+        ...milestoneFields,
+        {
+          name: 'children',
+          type: 'array',
+          labels: { singular: 'Sub-project', plural: 'Sub-projects' },
+          admin: { description: 'Second level, e.g. customer projects within a product.' },
+          fields: milestoneFields
+        }
+      ]
     }
   ]
 };
